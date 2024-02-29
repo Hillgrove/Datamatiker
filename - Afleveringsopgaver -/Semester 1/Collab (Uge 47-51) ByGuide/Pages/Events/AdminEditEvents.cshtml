@@ -1,0 +1,47 @@
+﻿@page "/Admin/Begivenheder"
+@model ByGuide.Pages.Events.GetAllEventsModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+
+<div id="page-e">
+    <div class="row g-3">
+        <h1>Events Tabel</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Handicapvenlig</th>
+                    <th scope="col">External link</th>
+                    <th scope="col"></th>
+                    <th scope="col"><a class="btn btn-primary" asp-page="CreateEvent">Opret en Begivenhed</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Events != null)
+                {
+                    foreach (var e in Model.Events)
+                    {
+                        <tr>
+                            <th scope="row">@e.Name</th>
+                            <td>@e.Name</td>
+                            <td>@e.DatetimeList</td>
+                            <td>@e.Price</td>
+                            <td>@(e.HandicapAccessible ? "Ja" : "Nej")</td>
+                            <td class="text-truncate" style="max-width: 10px;">@e.ExternalLink</td>
+                            <td><a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditEvent"
+                                    asp-route-id="@e.Name">Rediger</a></td>
+                            <td><a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeleteEvents"
+                                    asp-route-id="@e.Name">Slet</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

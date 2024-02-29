@@ -1,0 +1,39 @@
+@page "/Admin/Aktiviteter"
+@model ByGuide.Pages.Posts.GetAllPostsModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div id="page-post">
+    <div class="row g-3">
+        <h1>Aktiviteter Tabel</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Beskrivelse</th>
+                    <th scope="col"></th>
+                    <th scope="col"><a class="btn btn-primary" asp-page="CreatePost">Opret en Aktivitet</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Posts != null)
+                {
+                    foreach (var post in Model.Posts)
+                    {
+                        <tr>
+                            <th scope="row">@post.Id</th>
+                            <td>@post.Title</td>
+                            <td class="text-truncate" style="max-width: 20px;">@post.Description</td>
+                            <td><a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditPost"
+                                    asp-route-id="@post.Id">Rediger</a></td>
+                            <td><a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeletePost"
+                                    asp-route-id="@post.Id">Slet</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

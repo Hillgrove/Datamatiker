@@ -1,0 +1,38 @@
+﻿@page "/Aktiviteter/{id:int}"
+@model ByGuide.Pages.Activities.GetPostModel
+
+@*
+    Usage:
+    This view displays the details of a post specified by its ID.
+    Access this page by navigating to: ./Opslag/{id}
+    Example:
+    /Opslag/1 to display the post with ID 1.
+*@
+
+@{
+    ViewData["Title"] = Model.Post.Title;
+}
+
+@if (Model.Post == null)
+{
+    <p>Side ikke fundet.</p>
+}
+else
+{
+    <div id="fix" class="card my-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title mb-0">@Model.Post.Title</h3>
+            <h3 class="card-title">@Model.Post.Category</h3>
+        </div>
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Model.Post.ImageURL))
+            {
+                <div style="height: 300px; overflow: hidden; width: 100%;">
+                    <img src="@Model.Post.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
+                </div>
+            }
+            <p class="card-text">@Model.Post.Description</p>
+            <p class="card-text"><strong>Adresse:</strong><br />@Model.Post.Address</p>
+        </div>
+    </div>
+}

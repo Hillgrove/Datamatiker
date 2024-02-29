@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "BANKO",
+    "Price": 0,
+    "DateTime": "2023-12-19",
+    "Category": "Begivenheder og Aktiviteter",
+    "ExternalLink": "https://www.roskildelive.dk/perl/arrmore/type-roskilde5?ArrNr=16887725",
+    "HandicapAccessible": true
+  },
+  {
+    "Name": "Plexus-Roskilde",
+    "Price": 0,
+    "DateTime": "2023-12-21",
+    "Category": "Begivenheder og Aktiviteter",
+    "ExternalLink": "https://www.roskildelive.dk/perl/arrmore/type-roskilde5?ArrNr=17078187",
+    "HandicapAccessible": true
+  },
+  {
+    "Name": "Koncert med Martin Dale (irsk folkemusik & rock/pop classics)",
+    "Price": 50,
+    "DateTime": "2023-12-22",
+    "Category": "Begivenheder og Aktiviteter",
+    "ExternalLink": "https://billetto.dk/e/koncert-med-martin-dale-irsk-folkemusik-rock-pop-classics-billetter-879360?utm_campaign=websites&utm_content=DK+4192315&utm_medium=publishers&utm_source=billetto+advertising&vs=510105ff-67ca-48e7-be2e-6885ebef6556",
+    "HandicapAccessible": true
+  },
+  {
+    "Name": "KØB DIT JULETRÆ OG STØT FDF ROSKILDE",
+    "Price": 0,
+    "DateTime": "2023-12-23",
+    "Category": "Kultur og Historie",
+    "ExternalLink": "https://www.fdfroskilde.dk/2023/11/16/juletrae/",
+    "HandicapAccessible": false
+  },
+  {
+    "Name": "Julekonkurrence: Find nissen",
+    "Price": 0,
+    "DateTime": "2023-12-30",
+    "Category": "Begivenheder og Aktiviteter",
+    "ExternalLink": "https://www.roskildelive.dk/perl/arrmore/type-roskilde5?ArrNr=17139267",
+    "HandicapAccessible": false
+  }
+]

@@ -1,0 +1,45 @@
+﻿@page
+@model ByGuide.Pages.Events.EditEventModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h1>Rediger en begivenheder</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Event.Name" class="control-label"></label>
+        <input asp-for="Event.Name" class="form-control" />
+        <span asp-validation-for="Event.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Event.Price" class="control-label"></label>
+        <input asp-for="Event.Price" class="form-control" />
+        <span asp-validation-for="Event.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Event.DatetimeList" class="control-label"></label>
+        <input asp-for="Event.DatetimeList" type="datetime-local" class="form-control" />
+        <span asp-validation-for="Event.DatetimeList" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Event.ExternalLink" class="control-label"></label>
+        <input asp-for="Event.ExternalLink" class="form-control" />
+        <span asp-validation-for="Event.ExternalLink" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Event.HandicapAccessible" class="control-label"></label>
+        <input asp-for="Event.HandicapAccessible" class="form-control" />
+        <span asp-validation-for="Event.HandicapAccessible" class="text-danger"></span>
+    </div>
+
+    <p>
+        <div class="form-group">
+            <input type="submit" value="Opdater" class="btn btn-primary" />
+        </div>
+    </p>
+</form>
+
+<p>
+    <a asp-page="/Event/GetAllEvents">Tilbage til oversigten</a>
+</p>

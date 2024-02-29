@@ -1,0 +1,25 @@
+﻿@page
+@model ItemRazorV1.Pages.Order.CreateOrderModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="CustomerId" class="control-label"></label>
+		<input asp-for="CustomerId" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Customer.Name" class="control-label"></label>
+		<input asp-for="Customer.Name" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="OrderRemark" class="control-label"></label>
+		<input asp-for="OrderRemark" class="form-control" />
+	</div>
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Create" class="btn btn-primary" />
+		</div>
+	</p>
+</form>

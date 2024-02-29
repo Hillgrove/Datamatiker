@@ -1,0 +1,121 @@
+[
+  {
+    "Id": 4,
+    "Title": "Egholm museum",
+    "Description": "Egholm Slot V\u00E5benmuseum rummer en unik samling af v\u00E5ben, uniformer og historiske effekter fra 1600-tallet til og med 2.verdenskrig",
+    "Category": "Kultur og Historie",
+    "AdmissionPrice": 140,
+    "Address": "Treh\u00F8jevej 47, 4070 Kr. Hyllinge",
+    "ExternalLink": "https://egholmmuseum.dk/",
+    "HandicapAccesible": false,
+    "ImageURL": "https://egholmmuseum.dk/wp-content/uploads/2023/05/kampv.langt_.jpg",
+    "OpeningHours": {
+      "Torsdag": "10 - 16",
+      "L\u00F8rdag": "10 - 16",
+      "S\u00F8ndag": "10 - 16"
+    }
+  },
+  {
+    "Id": 5,
+    "Title": "Willumsens Museum",
+    "Description": "Maleri, skulptur, keramik af symbolisten og ekspressionisten J.F. Willumsen(1863-1958), samt et udvalg af \u00E6ldre v\u00E6rker fra Willumsens private kunstsamling \u201DGamle Samling\u201D.",
+    "Category": "Kultur og Historie",
+    "AdmissionPrice": 80,
+    "Address": "Jenriksvej 4, 3600 Frederikssund",
+    "ExternalLink": "https://www.willumsensmuseum.dk/",
+    "HandicapAccesible": false,
+    "ImageURL": "https://www.visitfjordlandet.dk/wp-content/uploads/2019/02/willumsens-museum-4.png",
+    "OpeningHours": {
+      "Mandag": "Lukket",
+      "Tirsdag": "10 - 17",
+      "Onsdag": "10 - 17",
+      "Torsdag": "10 - 17",
+      "Fredag": "10 - 17",
+      "L\u00F8rdag": "10 - 17",
+      "S\u00F8ndag": "10 - 17"
+    }
+  },
+  {
+    "Id": 6,
+    "Title": "Tadre M\u00F8lle",
+    "Description": "Tadre M\u00F8lles historie g\u00E5r tilbage til 1300-tallet. M\u00F8llen, der stadigv\u00E6k er fuldt funktionsdygtig, fungerer i dag som naturcenter og kulturhistorisk museum. Tadre M\u00F8lle er k\u00E5ret som Danmarks n\u00E6stsmukkeste.  I l\u00F8bet af \u00E5ret afholdes der sp\u00E6ndende aktiviteter og arrangementer for b\u00E5de b\u00F8rn og voksne herunder markeder og temadage i samarbejde med bl.a. Tadre M\u00F8lles Venner, Nationalpark Skjoldungernes Land og Danmarks Naturfredningsforening.  Du kan opleve m\u00F8llen og m\u00F8lles\u00F8en, l\u00E6gehaven og nyttehaven, g\u00E5 en tur i det smukke omr\u00E5de og f\u00E5 en kop kaffe p\u00E5 cafeen. Du kan ogs\u00E5 overnatte p\u00E5 naturlejrpladsen med 3 shelters, der ligger natursk\u00F8nt p\u00E5 omr\u00E5det.",
+    "Category": "Kultur og Historie",
+    "AdmissionPrice": 35,
+    "Address": "Tadre M\u00F8llevej 23, 4330 Hvals\u00F8",
+    "ExternalLink": "https://tadrem\u00F8lle.dk/",
+    "HandicapAccesible": false,
+    "ImageURL": "https://www.visitfjordlandet.dk/wp-content/uploads/2019/05/tadre-moelle-6.png",
+    "OpeningHours": {
+      "Torsdag": "11 - 16",
+      "Fredag": "11 - 16",
+      "L\u00F8rdag": "11 - 16",
+      "S\u00F8ndag": "11 - 16"
+    }
+  },
+  {
+    "Id": 7,
+    "Title": "Hedelands Veteranbane",
+    "Description": "Hedelands Veteranbane f\u00F8rer dig tilbage i tiden og ud i naturen i det Bes\u00F8g ogs\u00E5 museet og bliv klogere p\u00E5 Danmarks industribaner gennem tiderne.",
+    "Category": "Begivenheder og Aktiviteter",
+    "AdmissionPrice": 80,
+    "Address": "Brandh\u00F8jga\u030Ardsvej 2, 2640 Hedehusene",
+    "ExternalLink": "https://www.ibk.dk/",
+    "HandicapAccesible": false,
+    "ImageURL": "https://www.visitfjordlandet.dk/wp-content/uploads/2021/02/hedeland-veteranbane-5-705x370.png",
+    "OpeningHours": {
+      "Onsdag": "17:30"
+    }
+  },
+  {
+    "Id": 8,
+    "Title": "Den glemte herreg\u00E5rd \u2013 Sels\u00F8 Slot",
+    "Description": "Slottets historie g\u00E5r helt tilbage til middelalderen. Allerede i 1200-tallet eksisterede der en Sels\u00F8g\u00E5rd, den n\u00E6vnes f\u00F8rste gang i 1288 og tilh\u00F8rte da Roskilde bispes\u00E6de. Da den sidste beboer, Agathe von Qualen Plessen, d\u00F8de i 1829 indledte slottet sin Torneroses\u00F8vn, der varede 150 \u00E5r\u2026\r\n\r\nI 1972, da journalist- og forfatter\u00E6gteparret Grethe og Bernhard Linder forpagtede det gamle, forfaldne slot, p\u00E5begyndte de en n\u00E6nsom restaurering, og i dag kan man bes\u00F8ge det enest\u00E5ende herreg\u00E5rdshus, som st\u00E5r, n\u00E6sten som det blev forladt i 1829 \u2013 uden el, vand og varme.",
+    "Category": "Natur og Rekreation",
+    "AdmissionPrice": 60,
+    "Address": "Sels\u00F8vej 30A, 4050 Skibby",
+    "ExternalLink": "https://selsoe.dk/besog-os/",
+    "HandicapAccesible": false,
+    "ImageURL": "https://selsoe.dk/wp-content/uploads/2019/02/fullsizeoutput_433-1170x441.jpeg",
+    "OpeningHours": {
+      "Mandag": "11 - 16",
+      "Tirsdag": "11 - 16",
+      "Onsdag": "11 - 16",
+      "Torsdag": "11 - 16",
+      "Fredag": "11 - 16",
+      "L\u00F8rdag": "11 - 16",
+      "S\u00F8ndag": "11 - 16"
+    }
+  },
+  {
+    "Id": 9,
+    "Title": "Roskilde Domkirke \u2013 UNESCO Verdensarv",
+    "Description": "Velkommen til en kongelig kirke. Tag med p\u00E5 en kongelig tidsrejse og m\u00F8d 40 konger og dronninger i Danmarks kongelige gravkirke, h\u00F8r dragen hvine, dyk ned i m\u00F8rke krypter, og find roen under de h\u00F8je hv\u00E6lv.\r\n\r\nDomkirkens arkitektur er en tidsrejse gennem 800 \u00E5r, og det har sat den p\u00E5 UNESCO\u2019s Verdensarvsliste. 3 af vikingetidens konger er begravet: Harald Bl\u00E5tand (d. 986), Svend Tvesk\u00E6g (d. 1014) og Svend Estridsen (d. 1074). Siden 1500-tallet er alle danske konger begravet her.\r\n\r\nKirken er opf\u00F8rt i ca. 1200 som en imponerende gotisk katedral bygget i r\u00F8de teglsten.\r\n\r\nDomkirken er absolut et must-see, n\u00E5r du bes\u00F8ger Roskilde.",
+    "Category": "Kultur og Historie",
+    "AdmissionPrice": 70,
+    "Address": "Domkirkestr\u00E6de 10, 4000 Roskilde",
+    "ExternalLink": "https://roskildedomkirke.dk/besoeg",
+    "HandicapAccesible": false,
+    "ImageURL": "https://roskildedomkirke.dk/fileadmin/_processed_/c/0/csm_margrethe_a68eb74c1c.jpg",
+    "OpeningHours": {
+      "Mandag": "10-16",
+      "Tirsdag": "10-16",
+      "Onsdag": "10-16",
+      "Torsdag": "10-16",
+      "Fredag": "10-16",
+      "L\u00F8rdag": "10-16",
+      "S\u00F8ndag": "13 - 16"
+    }
+  },
+  {
+    "Id": 10,
+    "Title": "asdasd",
+    "Description": "asdasd",
+    "Category": "Kultur og Historie",
+    "AdmissionPrice": 2314,
+    "Address": "asd",
+    "ExternalLink": "asd",
+    "HandicapAccesible": false,
+    "ImageURL": null,
+    "OpeningHours": {}
+  }
+]

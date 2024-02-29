@@ -1,0 +1,74 @@
+﻿
+@* By: Jesper HØjlund *@
+
+@page
+@model ByGuide.Pages.Experiences.CreateExperienceModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h1>Opret ny oplevelse</h1>
+
+<form method="post">
+    <div class="form-group mt-3">
+        <label asp-for="Experience.Title" class="control-label">Titel</label>
+        <span asp-validation-for="Experience.Title" class="text-danger"></span>
+        <input asp-for="Experience.Title" class="form-control" />
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Experience.Description" class="control-label">Beskrivelse</label>
+        <textarea asp-for="Experience.Description" class="form-control" style="height: 300px;"></textarea>
+        <span asp-validation-for="Experience.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Experience.Category" class="control-label d-block">Kategori</label>
+        <select asp-for="Experience.Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control">
+            <option value="">Vælg en kategori</option>
+        </select>
+        <span asp-validation-for="Experience.Category" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Experience.AdmissionPrice" class="control-label">Pris</label>
+        <input asp-for="Experience.AdmissionPrice" class="form-control" />
+        <span asp-validation-for="Experience.AdmissionPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Experience.Address" class="control-label">Adresse</label>
+        <input asp-for="Experience.Address" class="form-control" />
+        <span asp-validation-for="Experience.Address" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Experience.ExternalLink" class="control-label">Link</label>
+        <input asp-for="Experience.ExternalLink" class="form-control" />
+        <span asp-validation-for="Experience.ExternalLink" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label class="font-weight-bold mr-2" asp-for="Experience.HandicapAccesible">Handicapvenlig</label>
+        <input asp-for="Experience.HandicapAccesible" type="checkbox" class="d-inline-block" id="HandicapAccesible">
+        <span asp-validation-for="Experience.HandicapAccesible" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <label asp-for="Experience.ImageURL" class="control-label">Billed URL</label>
+        <input asp-for="Experience.ImageURL" class="form-control" />
+        <span asp-validation-for="Experience.ImageURL" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">Åbningstider</div>
+    <div class="row">
+        @foreach (var day in new[] { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag" })
+        {
+            <div class="col-md-1">
+                <label>@day</label>
+                <input type="text" name="OpeningHours[@day]" class="form-control" />
+            </div>
+        }
+        <span asp-validation-for="Experience.OpeningHours" class="text-danger"></span>
+    </div>
+
+    <p>
+        <div class="form-group">
+            <input type="submit" value="Opret" class="btn btn-primary" />
+        </div>
+    </p>
+</form>

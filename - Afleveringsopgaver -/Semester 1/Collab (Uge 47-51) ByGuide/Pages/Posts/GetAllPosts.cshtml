@@ -1,0 +1,60 @@
+﻿
+@* By: Jesper Højlund *@
+
+@page
+@model ByGuide.Pages.Posts.GetAllPostsModel
+@{
+}
+
+<h1>Opslag</h1>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
+        <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-primary" />
+        <a href="./GetAllPosts" class="btn btn-secondary">Nulstil</a>
+    </div>
+</form>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">
+            <option value="">Vælg en kategori</option>
+        </select>
+        <input type="submit" asp-page-handler="Filter" value="Filter" class="btn btn-primary" />
+        <a href="./GetAllPosts" class="btn btn-secondary">Nulstil</a>
+    </div>
+</form>
+
+<p>
+    <a class="btn btn-primary" asp-page="CreatePost">Opret nyt opslag</a>
+</p>
+
+<div class="container">
+    @if (Model.Posts != null)
+    {
+        foreach (var post in Model.Posts)
+        {
+            <div class="card my-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">#@post.Id - @post.Title</h3>
+                    <div>
+                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditPost" asp-route-id="@post.Id">Rediger</a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeletePost" asp-route-id="@post.Id">Slet</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(post.ImageURL))
+                    {
+                        <div style="height: 300px; overflow: hidden; width: 100%;">
+                            <img src="@post.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
+                        </div>
+                    }
+                    <p><h5 class="card-title">Kategori: @post.Category</h5></p>
+                    <p class="card-text">@post.Description</p>
+                    <p class="card-text"><strong>Adresse:</strong><br />@post.Address</p>
+                </div>
+            </div>
+        }
+    }
+</div>

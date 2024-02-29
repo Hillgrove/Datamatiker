@@ -1,0 +1,64 @@
+﻿@* By: Jesper Højlund *@
+
+@page "/Oplevelser/{id:int}"
+@model ByGuide.Pages.Experiences.GetExperienceModel
+
+@*
+    Usage:
+    This view displays the details of an experience specified by its ID.
+    Access this page by navigating to: /Oplevelser/{id}
+    Example:
+    /Oplevelser/1 to display the experience with ID 1.
+*@
+
+@{
+    ViewData["Title"] = "Oplevelse";
+}
+
+@if (Model.Experience == null)
+{
+    <p>Side ikke fundet.</p>
+}
+else
+{
+    <div id="fix" class="card my-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title mb-0">@Model.Experience.Title</h3>
+            <h3 class="card-title">@Model.Experience.Category</h3>
+        </div>
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Model.Experience.ImageURL))
+            {
+                <div style="height: 300px; overflow: hidden; width: 100%;">
+                    <img src="@Model.Experience.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
+                </div>
+            }
+            <h5 class="card-title mt-3">Pris: @Model.Experience.AdmissionPrice kr.</h5>
+            <p class="card-text">@Model.Experience.Description</p>
+            <p class="card-text"><strong>Adresse:</strong><br />@Model.Experience.Address</p>
+            <p class="card-text">
+                <strong>Åbningstider:</strong><br>
+                @if (Model.Experience.OpeningHours != null && Model.Experience.OpeningHours.Any())
+                {
+                    foreach (var day in Model.Experience.OpeningHours)
+                    {
+                        <span>@day.Key: @day.Value</span>
+
+                        <br>
+                    }
+                }
+                else
+                {
+                    <span class="text-muted">Ingen åbningstider angivet</span>
+                }
+            </p>
+            <p class="card-text">
+                Handicapvenlig: @(Model.Experience.HandicapAccesible ? "Ja" : "Nej")
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="@Model.Experience.ExternalLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Læs mere</a>
+        </div>
+
+    </div>
+}

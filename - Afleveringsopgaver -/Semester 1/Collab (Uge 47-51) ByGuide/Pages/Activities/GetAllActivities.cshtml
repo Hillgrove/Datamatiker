@@ -1,0 +1,54 @@
+﻿@page "/Aktiviteter"
+@model ByGuide.Pages.Activities.GetAllActivitiesModel
+@{
+    ViewData["Title"] = "Aktiviteter";
+}
+
+<div id="page-activities">
+    <div class="row g-3">
+        <h1 class="text-center">Aktiviteter</h1>
+        <div class="col-12">
+            <form method="post">
+                <div class="input-group mb-3">
+                    <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
+                    <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-primary" />
+                    <a href="./Historie" class="btn btn-secondary">Nulstil</a>
+                </div>
+            </form>
+
+            <form method="post">
+                <div class="input-group">
+                    <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">
+                        <option value="">Vælg en kategori</option>
+                    </select>
+                    <input type="submit" asp-page-handler="Filter" value="Filter" class="btn btn-primary" />
+                    <a href="./Historie" class="btn btn-secondary">Nulstil</a>
+                </div>
+            </form>
+        </div>
+        @if (Model.Posts != null)
+        {
+            foreach (var post in Model.Posts)
+            {
+                <div class="col-4">
+                    <a class="card content-card text-decoration-none border-0" asp-area="" asp-page="GetPost" asp-route-id="@post.Id">
+                        @if (!string.IsNullOrEmpty(post.ImageURL))
+                        {
+                            <div class="card-header p-0" style="height: 150px; overflow: hidden; width: 100%;">
+                                <img src="@post.ImageURL"
+                                     class="img-fluid" alt="...">
+                            </div>
+                        }
+                        <div class="card-body">
+                            <p style="display:none;">@post.Category</p>
+                            <h5 style="color: #2F799E;">@post.Title</h5>
+                            <p class="text-truncate" style="color: #81BBD2;">@post.Description</p>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

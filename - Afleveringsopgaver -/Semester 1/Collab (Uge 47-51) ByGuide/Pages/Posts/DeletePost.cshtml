@@ -1,0 +1,17 @@
+﻿
+@* By: Jesper Højlund *@
+
+@page "{id:int}"
+@model ByGuide.Pages.Posts.DeletePostModel
+@{
+}
+
+<h1>Bekræft sletning</h1>
+
+<div class="alert alert-danger">
+    <h5>Er du sikker på at du vil slette aktivitet - @Model.Post.Title</h5>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Ja</button>
+        <a class="btn btn-primary" asp-page="/Post/GetAllPosts">Nej</a>
+    </form>
+</div>

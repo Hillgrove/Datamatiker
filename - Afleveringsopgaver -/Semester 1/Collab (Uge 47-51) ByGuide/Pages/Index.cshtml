@@ -1,0 +1,174 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Forside";
+}
+
+<div id="page-index">
+    <div id="carouselExample" class="carousel slide mb-5 mx-lg-auto">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/random/1000x500/?Toskilde+Ragnarok+Denmark&1"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/random/1000x500/?Travel&2" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/random/1000x500/?Travel&3" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div id="popular-activities" class="mb-5">
+        <div class="d-flex flex-column flex-grow-1">
+            <h2 class="mb-4" style="color: #145074;">Populære Aktiviteter</h2>
+            <div class="d-flex justify-content-between gap-3">
+                <a class="btn btn-outline-primary w-100" style="color: #2F799E; border-color: #81BBD2;" asp-area=""
+                    asp-page="">Roskilde Domkirke</a>
+                <a class="btn btn-outline-primary w-100" style="color: #2F799E; border-color: #81BBD2;" asp-area=""
+                    asp-page="">Musicon</a>
+                <a class="btn btn-outline-primary w-100" style="color: #2F799E; border-color: #81BBD2;" asp-area=""
+                    asp-page="">Roskilde Festival</a>
+                <a class="btn btn-outline-primary w-100" style="color: #2F799E; border-color: #81BBD2;" asp-area=""
+                    asp-page="">Vikingeskibsmuseet</a>
+                <a class="btn btn-outline-primary w-100" style="color: #2F799E; border-color: #81BBD2;" asp-area=""
+                    asp-page="">Ridebanen</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="categories" class="mb-5 py-4">
+        <h2 class="text-white">Kategorier</h2>
+        <p class="mb-3" style="color: #F5F5F5;">Opdag det bedste af Roskilde Kommune. Fra kultur og historie til mad og begivenheder - din nøgle til byens mangfoldighed.</p>
+        <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3 col-xl">
+                <a class="rounded d-flex flex-column align-items-center cat-card text-center text-decoration-none text-white"
+                    asp-area="" asp-page="">
+                    <img class="img-fluid rounded-top"
+                        src="https://source.unsplash.com/random/170x160/?Roskilde+Domkirke+Danmark&3" width="160" />
+                    <h3 class="fs-5 my-auto">Kultur og Historie</h3>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl">
+                <a class="rounded d-flex flex-column align-items-center cat-card text-center text-decoration-none text-white"
+                    asp-area="" asp-page="">
+                    <img class="img-fluid rounded-top"
+                        src="https://source.unsplash.com/random/170x160/?Nature+and+Recreation&3" width="160" />
+                    <h3 class="fs-5 my-auto">Natur og Rekreation</h3>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl">
+                <a class="rounded d-flex flex-column align-items-center cat-card text-center text-decoration-none text-white"
+                    asp-area="" asp-page="">
+                    <img class="img-fluid rounded-top"
+                        src="https://source.unsplash.com/random/170x160/?Food+and+Drinks&3" width="160" />
+                    <h3 class="fs-5 my-auto">Mad og Drikke</h3>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl">
+                <a class="rounded d-flex flex-column align-items-center cat-card text-center text-decoration-none text-white"
+                    asp-area="" asp-page="">
+                    <img class="img-fluid rounded-top"
+                        src="https://source.unsplash.com/random/170x160/?Events+and+Activities&3" width="160" />
+                    <h3 class="fs-5 my-auto">Begivenheder og Aktiviteter</h3>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 col-xl">
+                <a class="rounded d-flex flex-column align-items-center cat-card text-center text-decoration-none text-white"
+                    asp-area="" asp-page="">
+                    <img class="img-fluid rounded-top"
+                        src="https://source.unsplash.com/random/170x160/?Shopping+and+Sales&3" width="160" />
+                    <h3 class="fs-5 my-auto">Shopping og Handel</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="experiences" class="mb-4">
+        <h2 class="mb-4" style="color: #145074;">Oplevelser</h2>
+        <div class="row mb-5 g-3">
+            <div class="col-6 col-lg-3">
+                <a class="card text-decoration-none border-0 shadow text-black" style="background-color: #F9F9F9;"
+                    asp-area="" asp-page="">
+                    <img src="https://source.unsplash.com/random/200x200/?Roskilde+Domkirke+Denmark&1"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Roskilde Domkirke</h5>
+                        <p class="card-text text-truncate">
+                            Oplev historiens vingesus i UNESCO-listede Roskilde Domkirke, hjemsted for kongelige grave
+                            og imponerende gotisk arkitektur.
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <p class="mb-0"><i class="fa-solid fa-location-dot"></i> Roskilde</p>
+                        <p class="mb-0"><i class="fa-solid fa-coins"></i> Gratis</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-lg-3">
+                <a class="card text-decoration-none border-0 shadow text-black" style="background-color: #F9F9F9;"
+                    asp-area="" asp-page="">
+                    <img src="https://source.unsplash.com/random/200x200/?Kayak&3" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Roskilde Fjord Kajaktur</h5>
+                        <p class="card-text text-truncate">Udforsk Roskilde Fjord på kajak, nyd naturen og oplev roen på
+                            vandet.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <p class="mb-0"><i class="fa-solid fa-location-dot"></i> Roskilde</p>
+                        <p class="mb-0"><i class="fa-solid fa-coins"></i> Fra 150,- pr. pers.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-lg-3">
+                <a class="card text-decoration-none border-0 shadow text-black" style="background-color: #F9F9F9;"
+                    asp-area="" asp-page="">
+                    <img src="https://source.unsplash.com/random/200x200/?Gourmet+Food&3" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Gemyse Gourmet</h5>
+                        <p class="card-text text-truncate">
+                            Forkæl dine smagsløg med lokale delikatesser på Restaurant Gemyse i hjertet af Roskilde.
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <p class="mb-0"><i class="fa-solid fa-location-dot"></i> Roskilde</p>
+                        <p class="mb-0"><i class="fa-solid fa-coins"></i> Fra 400,- pr. pers.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-lg-3">
+                <a class="card text-decoration-none border-0 shadow text-black" style="background-color: #F9F9F9;"
+                    asp-area="" asp-page="">
+                    <img src="https://source.unsplash.com/random/200x200/?Viking+Ship&3" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Vikingeskibsmuseet</h5>
+                        <p class="card-text text-truncate">
+                            Tag hele familien med til Vikingeskibsmuseet og oplev imponerende vikingeskibe og
+                            interaktive udstillinger.
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <p class="mb-0"><i class="fa-solid fa-location-dot"></i> Roskilde</p>
+                        <p class="mb-0"><i class="fa-solid fa-coins"></i> Entré variere</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a class="btn btn-lg btn-primary border-0 fw-bold" style="color: #F9F9F9; background-color: #25668e;"
+                    asp-area="" asp-page="Experiences/GetAllExperiences"><i class="fa-solid fa-mountain-sun"></i> Se alle oplevelser</a>
+            </div>
+        </div>
+    </div>
+</div>
