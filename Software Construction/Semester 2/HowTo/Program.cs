@@ -555,7 +555,7 @@ for (int i = 1; i < 6;i++)
 
 Console.WriteLine();
 
-for (int round = 1; round < 6;round++)
+for (int round = 1; round < 6; round++)
 {
     Console.WriteLine($"Round {round}: {passiveNPC.DealDamage()} damage dealt.");
 }

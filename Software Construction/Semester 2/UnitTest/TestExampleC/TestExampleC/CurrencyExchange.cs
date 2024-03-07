@@ -12,16 +12,11 @@ public class CurrencyExchange
     }
 
 
-    public void AddCurrencyCross(string currencyCross, decimal exchangeRate)
+    public void AddCurrencyCross(CurrencyIdentifier currencyFrom, CurrencyIdentifier currencyTo, decimal exchangeRate)
     {
-        string currencyCrossUpper = currencyCross.ToUpper().Trim();
+        string currencyCross = currencyFrom.Identifier + currencyTo.Identifier;
 
-        if (string.IsNullOrWhiteSpace(currencyCrossUpper))
-        {
-             throw new ArgumentException("Currency cross cannot be null, empty or only consist of whitespace characters.", nameof(currencyCross));
-        }
-
-        if (ExchangeRates.ContainsKey(currencyCrossUpper))
+        if (ExchangeRates.ContainsKey(currencyCross))
         {
             throw new ArgumentException("Currency cross already exists.", nameof(currencyCross));
         }
@@ -31,20 +26,15 @@ public class CurrencyExchange
             throw new ArgumentOutOfRangeException("Exchange rate should be postive.", nameof(exchangeRate));
         }
 
-        ExchangeRates.Add(currencyCrossUpper, exchangeRate);
+        ExchangeRates.Add(currencyCross, exchangeRate);
     }
 
 
-    public decimal Exchange(string currencyCross, decimal amount)
+    public decimal Exchange(CurrencyIdentifier currencyFrom, CurrencyIdentifier currencyTo, decimal amount)
     {
-        string currencyCrossUpper = currencyCross.ToUpper().Trim();
+        string currencyCross = currencyFrom.Identifier + currencyTo.Identifier;
 
-        if (string.IsNullOrWhiteSpace(currencyCrossUpper))
-        {
-            throw new ArgumentException("Currency cross cannot be null, empty or only consist of whitespace characters.", nameof(currencyCross));
-        }
-
-        if (!ExchangeRates.ContainsKey(currencyCrossUpper))
+        if (!ExchangeRates.ContainsKey(currencyCross))
         {
             throw new ArgumentException("Currency cross does not exist.", nameof(currencyCross));
         }
@@ -54,7 +44,7 @@ public class CurrencyExchange
             throw new ArgumentOutOfRangeException("Amount must be positive", nameof(amount));
         }
 
-        decimal exhangeRate = ExchangeRates[currencyCrossUpper];
+        decimal exhangeRate = ExchangeRates[currencyCross];
         return amount * exhangeRate;
     }
     
