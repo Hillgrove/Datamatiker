@@ -30,3 +30,4 @@ Console.WriteLine($"{amountFrom} {EUR.Identifier} is {amountTo} {USD.Identifier}
 
 amountTo = currencyExchange.Exchange(USD, DKK, 100);
 Console.WriteLine($"{amountFrom} {USD.Identifier} is {amountTo} {DKK.Identifier}");
+
