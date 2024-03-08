@@ -21,19 +21,12 @@ internal class CurrencyIdentifierRepo
 
     public void Remove(CurrencyIdentifier currency)
     {
-        if (! _currencies.Contains(currency))
+        if (!_currencies.Contains(currency))
         {
             throw new ArgumentException("Currency Identifier does not exist", nameof(currency));
         }
 
         _currencies.Remove(currency);
     }
-
-    public bool Contains(CurrencyIdentifier currency) 
-    {
-        return _currencies.Contains(currency);
-    }
-
-
 }
 

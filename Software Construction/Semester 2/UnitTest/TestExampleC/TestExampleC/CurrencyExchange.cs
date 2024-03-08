@@ -12,21 +12,24 @@ public class CurrencyExchange
     }
 
 
-    public void AddCurrencyCross(CurrencyIdentifier currencyFrom, CurrencyIdentifier currencyTo, decimal exchangeRate)
+    public void AddOrUpdateExchangeRate(CurrencyIdentifier currencyFrom, CurrencyIdentifier currencyTo, decimal exchangeRate)
     {
         string currencyCross = currencyFrom.Identifier + currencyTo.Identifier;
-
-        if (ExchangeRates.ContainsKey(currencyCross))
-        {
-            throw new ArgumentException("Currency cross already exists.", nameof(currencyCross));
-        }
 
         if (exchangeRate < 0)
         {
             throw new ArgumentOutOfRangeException("Exchange rate should be postive.", nameof(exchangeRate));
         }
 
-        ExchangeRates.Add(currencyCross, exchangeRate);
+        if (ExchangeRates.ContainsKey(currencyCross))
+        {
+            ExchangeRates[currencyCross] = exchangeRate;
+        }
+
+        else
+        {
+            ExchangeRates.Add(currencyCross, exchangeRate);
+        }
     }
 
 
@@ -46,6 +49,5 @@ public class CurrencyExchange
 
         decimal exhangeRate = ExchangeRates[currencyCross];
         return amount * exhangeRate;
-    }
-    
+    }   
 }
