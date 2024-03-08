@@ -20,6 +20,12 @@ public class CurrencyIdentifier
     /// </exception>
     public CurrencyIdentifier(string identifier)
     {
+        ValidateIdentifier(identifier);
+        Identifier = identifier.ToUpper().Trim();        
+    }
+
+    private static void ValidateIdentifier(string identifier)
+    {
         string identifierUpper = identifier.ToUpper().Trim();
 
         if (string.IsNullOrEmpty(identifierUpper))
@@ -36,8 +42,6 @@ public class CurrencyIdentifier
         {
             throw new ArgumentException("Identifier must consist only of alphabetic characters", nameof(identifier));
         }
-
-        Identifier = identifierUpper;
     }
 }
 
