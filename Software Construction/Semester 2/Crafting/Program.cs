@@ -20,5 +20,7 @@ p1.AddToInventory(fabric, 2);
 p1.AddToInventory(thread, 1);
 
 bool craft1 = axe.IsCraftable(p1);
+bool craft2 = gloves.IsCraftable(p1);
 
 Console.WriteLine(craft1);
+Console.WriteLine(craft2);
