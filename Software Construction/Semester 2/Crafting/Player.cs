@@ -2,23 +2,16 @@
 public class Player
 {
     public string Name { get; }
-    public Dictionary<Resource, int> Inventory { get; }
+    private Inventory _inventory { get; }
 
     public Player(string name)
     {
         Name = name;
-        Inventory = new Dictionary<Resource, int>();
+        _inventory = new Inventory();
     }
 
     public void AddToInventory(Resource resource, int amount)
     {
-        Inventory.Add(resource, amount);
-    }
-
-    public void CraftRecipe(Recipe recipe)
-    {   
-        // TODO
-        throw new NotImplementedException();
+        _inventory.Add(resource, amount);
     }
 }
-

@@ -10,11 +10,11 @@ public class Recipe
         Resources = resources.ToDictionary(pair => pair.resource, pair => pair.amount);
     }
 
-    public bool IsCraftable(Player player)
+    public bool IsCraftable(Inventory inventory)
     {
         foreach (var resource in Resources)
         {
-            if (!player.Inventory.ContainsKey(resource.Key) || player.Inventory[resource.Key] < resource.Value)
+            if (!inventory.Contents.ContainsKey(resource.Key) || inventory.Contents[resource.Key] < resource.Value)
             {
                 return false;
             }
