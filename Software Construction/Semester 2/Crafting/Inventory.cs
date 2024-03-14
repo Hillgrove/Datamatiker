@@ -12,4 +12,9 @@ public class Inventory
     {
         _contents.Add(resource, amount);
     }
+
+    public bool HasResource(Resource resource, int requiredAmount)
+    {
+        return _contents.TryGetValue(resource, out int availableAmount) && availableAmount >= requiredAmount;
+    }
 }

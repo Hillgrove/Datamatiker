@@ -1,4 +1,6 @@
 ﻿
+CraftingManager craftingManager = new CraftingManager();
+
 Resource wood = new Resource("Wood");
 Resource iron = new Resource("Iron");
 Resource fabric = new Resource("Fabric");
@@ -13,18 +15,15 @@ Recipe glovesRecipe = new Recipe("Gloves",
     (fabric, 2),
     (thread, 2));
 
-Product axeProduct = new Product("Axe", axeRecipe);
-Product glovesProduct = new Product("Gloves", glovesRecipe);
-
 Player p1 = new Player("Lennie");
 p1.AddToInventory(wood, 3);
 p1.AddToInventory(iron, 5);
 p1.AddToInventory(fabric, 2);
 p1.AddToInventory(thread, 1);
 
-bool craft1 = axeProduct.IsCraftable(p1.Inventory);
-bool craft2 = glovesRecipe.IsCraftable(p1.Inventory);
+bool canCraftAxe = craftingManager.IsCraftable(p1, axeRecipe);
+bool canCraftGloves = craftingManager.IsCraftable(p1 , glovesRecipe);
 
 
-Console.WriteLine(craft1);
-Console.WriteLine(craft2);
+Console.WriteLine(canCraftAxe);
+Console.WriteLine(canCraftGloves);

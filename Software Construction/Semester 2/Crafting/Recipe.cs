@@ -1,24 +1,25 @@
 ﻿
 public class Recipe
 {
+    private Dictionary<Resource, int> _requiredResources;
     public string Name { get; }
-    public Dictionary<Resource, int> Resources { get; private set; }
 
     public Recipe(string name, params (Resource resource, int amount)[] resources)
     {
         Name = name;
-        Resources = resources.ToDictionary(pair => pair.resource, pair => pair.amount);
+        _requiredResources = resources.ToDictionary(pair => pair.resource, pair => pair.amount);
     }
 
     public bool IsCraftable(Inventory inventory)
     {
-        foreach (var resource in Resources)
+        foreach (var (resource,  requiredAmount) in _requiredResources)
         {
-            if (!inventory.Contents.ContainsKey(resource.Key) || inventory.Contents[resource.Key] < resource.Value)
+            if (!inventory.HasResource(resource, requiredAmount))
             {
                 return false;
             }
         }
+
         return true;
     }
 }

@@ -2,11 +2,9 @@
 public  class Product
 {
     public string Name { get; }
-    public Recipe Recipe { get; private set; }
 
-    public Product(string name, Recipe recipe)
+    public Product(string name)
     {
         Name = name;
-        Recipe = recipe;
     }
 }
