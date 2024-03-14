@@ -1,8 +1,8 @@
 ﻿
 public class Player
 {
-    public string Name { get; }
     private Inventory _inventory { get; }
+    public string Name { get; }
 
     public Player(string name)
     {
