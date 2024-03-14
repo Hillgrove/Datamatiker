@@ -24,6 +24,5 @@ p1.AddToInventory(thread, 1);
 bool canCraftAxe = craftingManager.IsCraftable(p1, axeRecipe);
 bool canCraftGloves = craftingManager.IsCraftable(p1 , glovesRecipe);
 
-
 Console.WriteLine(canCraftAxe);
 Console.WriteLine(canCraftGloves);
