@@ -1,4 +1,5 @@
 ﻿
+// Does a validator need validation?
 public static class Validator
 {
     public static void ValidateName(string name)
@@ -7,7 +8,7 @@ public static class Validator
 
         if (string.IsNullOrEmpty(trimmedName) || trimmedName.Length < 2)
         {
-            throw new ArgumentException($"Invalid Name: '{name}'. Name must contain at least 2 characters", nameof(name));
+            throw new ArgumentNullException($"Invalid Name: '{name}'. Name must contain at least 2 characters", nameof(name));
         }
 
         if (!trimmedName.All(char.IsLetter))

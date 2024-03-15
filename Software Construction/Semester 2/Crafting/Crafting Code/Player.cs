@@ -6,7 +6,8 @@ public class Player
 
     public Player(string name)
     {
-        Name = name;
+        Validator.ValidateName(name);
+        Name = name.Trim().ToTitleCase();
         _inventory = new Inventory();
     }
 
@@ -17,6 +18,7 @@ public class Player
 
     public void AddToInventory(Resource resource, int amount)
     {
+        // TODO : Validate amount
         _inventory.Add(resource, amount);
     }
 }

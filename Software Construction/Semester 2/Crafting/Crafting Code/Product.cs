@@ -5,6 +5,7 @@ public  class Product
 
     public Product(string name)
     {
-        Name = name;
+        Validator.ValidateName(name);
+        Name = name.Trim().ToTitleCase();
     }
 }

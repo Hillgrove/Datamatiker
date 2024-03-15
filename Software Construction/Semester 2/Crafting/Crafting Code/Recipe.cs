@@ -14,6 +14,7 @@ public class Recipe
         _requiredResources = resources.ToDictionary(pair => pair.resource, pair => pair.amount);
     }
 
+    // TODO : Recursively? check if parts can be crafted
     public bool IsCraftable(Inventory inventory)
     {
         foreach (var (resource,  requiredAmount) in _requiredResources)
