@@ -6,7 +6,7 @@ public class Player
 
     public Player(string name)
     {
-        Validator.ValidateName(name);
+        Validator.ValidateString(name);
         Name = name.Trim().ToTitleCase();
         _inventory = new Inventory();
     }

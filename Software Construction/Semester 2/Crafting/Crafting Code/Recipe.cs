@@ -7,7 +7,7 @@ public class Recipe
 
     public Recipe(string name, params (Resource resource, int amount)[] resources)
     {
-        Validator.ValidateName(name);
+        Validator.ValidateString(name);
         ValidateResources(resources);
 
         Name = name.Trim().ToTitleCase();
@@ -33,6 +33,7 @@ public class Recipe
     {
         ValidateResourceParameters(resources);
         ValidateDuplicateResources(resources);
+        // TODO : Check for zero params
     }
 
     private static void ValidateResourceParameters(params (Resource resource, int amount)[] resources)
