@@ -33,7 +33,7 @@ public class Recipe
     {
         ValidateResourceParameters(resources);
         ValidateDuplicateResources(resources);
-        // TODO : Check for zero params
+        // TODO : Check for zero params 
     }
 
     private static void ValidateResourceParameters(params (Resource resource, int amount)[] resources)
