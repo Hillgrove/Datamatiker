@@ -25,7 +25,7 @@ dbMethods.WriteToDB(d2);
 // 4) Read all drinks from the DB, and print them (should print 12 drinks)
 Helpers.PrintDrinkList(dbMethods.ReadAllFromDB());
 
-
+    
 // 5) Delete the drinks that were just added to the DB
 dbMethods.DeleteFromDB(maxId + 1);
 dbMethods.DeleteFromDB(maxId + 2);
