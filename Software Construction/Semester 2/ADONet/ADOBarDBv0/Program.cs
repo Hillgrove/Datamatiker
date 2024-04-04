@@ -112,10 +112,12 @@ void PrintCustomers()
 
 void ResetCustomers()
 {
+    string currentDirectory = Directory.GetCurrentDirectory();
+    string relativePath = @"..\..\..\ResetCustomer.sql";
+    string fullPath = Path.GetFullPath(Path.Combine(currentDirectory, relativePath));
     try
     {
-        string script = File.ReadAllText(@"E:\- Repos -\Datamatiker\Software Construction\" +
-                                         @"Semester 2\ADONet\ADOBarDBv0\ResetCustomer.sql");
+        string script = File.ReadAllText(fullPath);
 
         using SqlConnection connection = new SqlConnection(builder.ConnectionString);
         connection.Open();
