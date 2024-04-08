@@ -1,18 +1,19 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using EFCBarDBv2.ModelsGenerated;
 
-Console.WriteLine("Test of EFCore, two related tables");
+Console.WriteLine("Test of EFCore, two related tables");    
 Console.WriteLine();
 
 
 // 1) Create a context to access the database
-//using EFCDrinkDBContext context = new EFCDrinkDBContext();
+using EFCDrinkDBContext context = new EFCDrinkDBContext();
 
 // 2a) Read all drinks from the DB, and print them (should print 10 drinks)
-//var drinksNoInclude =
-//    context.Drinks;
+var drinksNoInclude =
+    context.Drinks;
 
-//Helpers.PrintList(drinksNoInclude, "(without Include)");
+Helpers.PrintList(drinksNoInclude, "(without Include)");
 
 
 // 2b) Read all drinks from the DB, and print them (should print 10 drinks)
