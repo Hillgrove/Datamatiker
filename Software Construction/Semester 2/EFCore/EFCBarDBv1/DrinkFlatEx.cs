@@ -6,8 +6,8 @@ namespace EFCBarDBv1
     {
         public override string ToString()
         {
-            return $"{Id}: {Name}. Alcohol: {AlcoholicPart} - {AlcoholicPartAmount} cl. " +
-                $"Non-Alcohol: {NonAlcoholicPart} - {NonAlcoholicPartAmount} cl";
+            return $"{Id}: {Name} - {AlcoholicPart} ({AlcoholicPartAmount} cl) " +
+                $"{NonAlcoholicPart} ({NonAlcoholicPartAmount} cl)";
         }
     }
 }
