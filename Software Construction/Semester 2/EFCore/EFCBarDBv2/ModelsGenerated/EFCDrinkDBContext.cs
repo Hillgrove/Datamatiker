@@ -31,9 +31,13 @@ public partial class EFCDrinkDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Drink__3214EC07EAE49068");
 
-            entity.HasOne(d => d.AlcoholicPart).WithMany(p => p.DrinkAlcoholicParts).HasConstraintName("FK_Drink_Ingredient_Alc");
+            entity.HasOne(d => d.AlcoholicPart)
+            .WithMany(p => p.DrinkAlcoholicParts)
+            .HasConstraintName("FK_Drink_Ingredient_Alc");
 
-            entity.HasOne(d => d.NonAlcoholicPart).WithMany(p => p.DrinkNonAlcoholicParts).HasConstraintName("FK_Drink_Ingredient_NonAlc");
+            entity.HasOne(d => d.NonAlcoholicPart)
+            .WithMany(p => p.DrinkNonAlcoholicParts)
+            .HasConstraintName("FK_Drink_Ingredient_NonAlc");
         });
 
         modelBuilder.Entity<Ingredient>(entity =>
