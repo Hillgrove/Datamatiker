@@ -9,13 +9,22 @@ public class Simulator
     #region Instance fields
     private Random _generator;
     private Cache? _cache;
+    private int _maxX;
+    private int _maxY;
+    #endregion
+
+    #region Constants
+    private const int MAX_VALUE = 1000;
+    private const int CALCULATION_PAUSE_MS = 500;
     #endregion
 
     #region Constructor
-    public Simulator()
+    public Simulator(int maxX, int maxY, bool useCache)
     {
+        _maxX = maxX;
+        _maxY = maxY;
         _generator = new Random();
-        _cache = new Cache(); // switch to null for cache-less calculation;
+        _cache = useCache? new Cache(maxX, maxY) : null; // switch to null for cache-less calculation;
     }
     #endregion
 
@@ -27,7 +36,7 @@ public class Simulator
     {
         int? result = null;
 
-        if (x < 5 && x >= 0 && y < 5 && y >= 0)
+        if (x < _maxX && x >= 0 && y < _maxY && y >= 0)
         {
             if (_cache != null)
             {
@@ -53,8 +62,8 @@ public class Simulator
     /// </summary>
     private int DoCalculation(int x, int y)
     {
-        Pause(500);
-        return _generator.Next(1, 1000);
+        Pause(CALCULATION_PAUSE_MS);
+        return _generator.Next(1, MAX_VALUE);
     }
 
     /// <summary>
