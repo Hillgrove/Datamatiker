@@ -1,5 +1,5 @@
 ﻿
-public class Circle
+public class Circle : IComparable<Circle>
 {
     #region Properties
     public double Radius { get; }
@@ -21,6 +21,13 @@ public class Circle
     public override string ToString()
     {
         return $"Circle at ({X} , {Y}) has an area of {Area:#.000000}";
+    }
+
+    public int CompareTo(Circle other)
+    {
+        if (Area < other.Area) { return -1; }
+        if (Radius < other.Radius) {  return 1; }
+        return 0;
     }
     #endregion
 }
