@@ -1,0 +1,28 @@
+﻿/* Outline all DIV elements */
+div {
+    border: 1px solid red !important;
+}
+
+/* Outline Bootstrap Grid System */
+.row {
+    border: 1px solid blue !important;
+}
+
+.col,
+[class*="col-"] {
+    border: 1px solid green !important;
+    position: relative; /* Helps visualize the grid layout */
+}
+
+/* Optionally add labels to columns 
+    [class*="col-"]::before {
+        content: attr(class);
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 5px;
+        font-size: 12px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    */
