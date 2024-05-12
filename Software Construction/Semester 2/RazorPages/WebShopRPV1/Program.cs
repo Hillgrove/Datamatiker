@@ -8,7 +8,6 @@ builder.Services.AddRazorPages(options =>
 
 // Add data services
 builder.Services.AddSingleton<IProductDataService, EFCProductDataService>();
-builder.Services.AddSingleton<ICustomerDataService, EFCCustomerDataService>();
 
 var app = builder.Build();
 
