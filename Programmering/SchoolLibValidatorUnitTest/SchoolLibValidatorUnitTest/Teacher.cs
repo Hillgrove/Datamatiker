@@ -40,6 +40,5 @@ namespace SchoolLibValidatorUnitTest
         {
             return $"{Id}: {Name} - Salary: {Salary}";
         }
-
     }
 }
