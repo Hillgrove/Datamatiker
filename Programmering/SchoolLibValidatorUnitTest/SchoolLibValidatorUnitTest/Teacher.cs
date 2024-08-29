@@ -1,19 +1,9 @@
 ﻿
 namespace SchoolLibValidatorUnitTest
 {
-    public class Teacher
+    public class Teacher : Person
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
         public int Salary { get; set; }
-
-        public void ValidateName()
-        {
-            if (string.IsNullOrEmpty(Name))
-            {
-                throw new ArgumentNullException("Name cannot be null or empty.", nameof(Name));
-            }
-        }
 
         public void ValidateSalary()
         {
@@ -23,15 +13,15 @@ namespace SchoolLibValidatorUnitTest
             }
         }
 
-        public void Validate()
+        public override void Validate()
         {
-            ValidateName();
+            base.Validate();
             ValidateSalary();
         }
         
         public override string ToString()
         {
-            return $"{Id}: {Name} - Salary: {Salary}";
+            return base.ToString() + $" - Salary: {Salary}";
         }
     }
 }
