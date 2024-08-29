@@ -4,8 +4,10 @@ namespace SchoolLibValidatorUnitTest.Tests
     [TestClass()]
     public class TeacherTests
     {
-        private Teacher teacher = new Teacher { Id = 1, Name = "A", Salary = 1 };
-        private Teacher teacherSalaryZero = new Teacher { Id = 4, Name = "A", Salary = -1 };
+        private Teacher teacher = new Teacher { Id = 1, Name = "A", Salary = 1, Classes = new List<string> { "A" } };
+        private Teacher teacherSalaryZero = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = new List<string> { "A" } };
+        private Teacher teacherListNull = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = null };
+
      
         [TestMethod()]
         public void ValidateSalaryTest()
@@ -30,6 +32,13 @@ namespace SchoolLibValidatorUnitTest.Tests
         {
             teacher.Salary = salary;
             teacher.ValidateSalary();
+        }
+
+        [TestMethod()]
+        public void ValidateClassesTest()
+        {
+            teacher.ValidateClasses();
+            Assert.ThrowsException<ArgumentNullException>(() => teacherListNull.ValidateClasses());
         }
 
         [TestMethod()]

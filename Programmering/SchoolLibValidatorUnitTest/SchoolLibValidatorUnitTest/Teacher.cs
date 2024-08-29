@@ -4,12 +4,21 @@ namespace SchoolLibValidatorUnitTest
     public class Teacher : Person
     {
         public int Salary { get; set; }
+        public List<string>? Classes { get; set; }
 
         public void ValidateSalary()
         {
             if (Salary <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(Salary), Salary, "Salary must be a postive value.");
+            }
+        }
+
+        public void ValidateClasses()
+        {
+            if (Classes == null)
+            {
+                throw new ArgumentNullException(nameof(Classes), "Classes must not be null");
             }
         }
 
