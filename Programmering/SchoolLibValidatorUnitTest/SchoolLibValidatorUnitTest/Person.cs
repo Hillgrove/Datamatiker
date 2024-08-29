@@ -5,6 +5,7 @@ namespace SchoolLibValidatorUnitTest
     {
         public int Id { get; set; }
         public string? Name { get; set; }
+        public GenderType Gender { get; set; }
 
         public override string ToString()
         {
