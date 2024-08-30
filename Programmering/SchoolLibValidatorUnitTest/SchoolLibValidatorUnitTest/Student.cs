@@ -1,9 +1,9 @@
 ﻿
 namespace SchoolLibValidatorUnitTest
 {
-    public class Student : Person
+    public class Student : Person, IStudent
     {
-        public int Semester {  get; set; }
+        public int Semester { get; set; }
 
         public void ValidateSemester()
         {

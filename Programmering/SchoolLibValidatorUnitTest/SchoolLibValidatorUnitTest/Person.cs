@@ -1,7 +1,7 @@
 ﻿
 namespace SchoolLibValidatorUnitTest
 {
-    public class Person
+    public class Person : IPerson
     {
         public int Id { get; set; }
         public string? Name { get; set; }

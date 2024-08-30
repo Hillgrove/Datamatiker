@@ -1,7 +1,7 @@
 ﻿
 namespace SchoolLibValidatorUnitTest
 {
-    public class Teacher : Person
+    public class Teacher : Person, ITeacher
     {
         public int Salary { get; set; }
         public List<string>? Classes { get; set; }
@@ -27,7 +27,7 @@ namespace SchoolLibValidatorUnitTest
             base.Validate();
             ValidateSalary();
         }
-        
+
         public override string ToString()
         {
             return base.ToString() + $" - Salary: {Salary}";
