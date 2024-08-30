@@ -4,9 +4,9 @@ namespace SchoolLibValidatorUnitTest.Tests
     [TestClass()]
     public class PersonTests
     {
-        private Person person = new Person { Id = 1, Name = "A" };
-        private Person personNameNull = new Person { Id = 2, Name = null };
-        private Person personNameEmpty = new Person { Id = 3, Name = "" };
+        private IPerson person = new Person { Id = 1, Name = "A" };
+        private IPerson personNameNull = new Person { Id = 2, Name = null };
+        private IPerson personNameEmpty = new Person { Id = 3, Name = "" };
 
         [TestMethod()]
         public void ValidateNameTest()

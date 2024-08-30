@@ -4,9 +4,9 @@ namespace SchoolLibValidatorUnitTest.Tests
     [TestClass()]
     public class TeacherTests
     {
-        private Teacher teacher = new Teacher { Id = 1, Name = "A", Salary = 1, Classes = new List<string> { "A" } };
-        private Teacher teacherSalaryZero = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = new List<string> { "A" } };
-        private Teacher teacherListNull = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = null };
+        private ITeacher teacher = new Teacher { Id = 1, Name = "A", Salary = 1, Classes = new List<string> { "A" } };
+        private ITeacher teacherSalaryZero = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = new List<string> { "A" } };
+        private ITeacher teacherListNull = new Teacher { Id = 4, Name = "A", Salary = -1, Classes = null };
 
      
         [TestMethod()]

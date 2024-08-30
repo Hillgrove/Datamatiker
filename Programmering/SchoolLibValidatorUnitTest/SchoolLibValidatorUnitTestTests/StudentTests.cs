@@ -4,9 +4,9 @@ namespace SchoolLibValidatorUnitTest.Tests
     [TestClass()]
     public class StudentTests
     {
-        private Student student = new Student { Id = 1, Name = "A", Semester = 1 };
-        private Student studentSemesterZero = new Student { Id = 4, Name = "A", Semester = 0 };
-        private Student studentSemesterEight = new Student { Id = 5, Name = "A", Semester = 8 };
+        private IStudent student = new Student { Id = 1, Name = "A", Semester = 1 };
+        private IStudent studentSemesterZero = new Student { Id = 4, Name = "A", Semester = 0 };
+        private IStudent studentSemesterEight = new Student { Id = 5, Name = "A", Semester = 8 };
 
         [TestMethod()]
         public void ValidateSemesterTest()
