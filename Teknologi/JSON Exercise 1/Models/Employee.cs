@@ -22,15 +22,8 @@ namespace JSON_Exercise_1.Models
 
         public override string ToString()
         {
-            //return $"Dealership Name: {Name}\n" +
-            //       $"Address: {Address}\n" +
-            //       $"Cars:\n" +
-            //       $"{carsInfo}\n" +
-            //       $"Employees:\n" +
-            //       $"{employeesInfo}";
-
             var jobInfo = JobAreas != null && JobAreas.Count > 0
-                ? string.Join(", ", JobAreas.Select(job => job.ToString()))
+                ? string.Join(", ", JobAreas)
                 : "No jobinfo available";
             return $"Name: {Name} - Salary: {Salary} - MonthsEmployed: {MonthsEmployed} - JobAreas: {jobInfo}";
         }
