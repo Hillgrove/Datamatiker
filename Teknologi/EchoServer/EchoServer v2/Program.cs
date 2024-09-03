@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Sockets;
 
 Console.WriteLine("TCP Server");
-Console.WriteLine("""Type "quit" to shutdown server.""");
 
 // Listens for incomming connections
 TcpListener listener = new TcpListener(IPAddress.Any, 7);
@@ -11,13 +10,15 @@ TcpListener listener = new TcpListener(IPAddress.Any, 7);
 // Starting server
 listener.Start();
 
-// Establish connection/socket
-TcpClient socket = listener.AcceptTcpClient();
-
-HandleClient(socket);
+while (true)
+{
+    // Establish connection/socket
+    TcpClient socket = listener.AcceptTcpClient();
+    Task.Run(() => HandleClient(socket));
+}
 
 // Stopping server
-listener.Stop();
+listener.Stop();  // Currently not reached
 
 
 void HandleClient(TcpClient socket)
@@ -27,8 +28,8 @@ void HandleClient(TcpClient socket)
     StreamReader reader = new StreamReader(ns);
     StreamWriter writer = new StreamWriter(ns);
 
-    bool serverRunning = true;
-    while (serverRunning)
+    bool socketActive = true;
+    while (socketActive)
     {
         // Reading what the client sends
         string message = reader.ReadLine();
@@ -36,17 +37,16 @@ void HandleClient(TcpClient socket)
 
         if (message == "quit")
         {
-            serverRunning = false;
-            Console.WriteLine($"Debug: Shutting down connection!"); // for debugging purposes
-            writer.WriteLine("Shutting down connection!");
+            socketActive = false;
+            Console.WriteLine($"Debug: Closing down connection!"); // for debugging purposes
+            writer.WriteLine("Closing down connection!");
             writer.Flush();
             break;
         }
 
         // Writing back/echo to the client
-        writer.WriteLine(message);
+        writer.WriteLine(message.ToUpper());
         writer.Flush();
-
     }
 
     // Close connection/socket and stop listener
