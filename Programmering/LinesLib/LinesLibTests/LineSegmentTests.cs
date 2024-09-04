@@ -34,12 +34,12 @@ namespace LinesLib.Tests
         [TestMethod()]
         [DataRow(0)]
         [DataRow(1)]
+        public void ContainsTestIntParameterCorrect(int point)
+        {
+            lineSegment.Contains(point);
         [DataRow(5)]
         [DataRow(10)]
         [DataRow(11)]
-        public void ContainsTestIntParameterTrue(int point)
-        {
-            lineSegment.Contains(point);
         }
 
         [TestMethod()]
