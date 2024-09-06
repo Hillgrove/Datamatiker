@@ -31,35 +31,40 @@ namespace LinesLib.Tests
         }
 
         [TestMethod()]
-        [DataRow(0)]
         [DataRow(1)]
-        public void ContainsTestIntParameterCorrect(int point)
-        {
-            lineSegment.Contains(point);
         [DataRow(5)]
         [DataRow(10)]
+        public void ContainsTestIntParameterCorrect(int point)
+        {
+            Assert.IsTrue(lineSegment.Contains(point));
+
+        }
+
+        [DataRow(0)]
         [DataRow(11)]
+        [TestMethod()]
+        public void ContainsTestIntParameterFalse(int point)
+        {
+            Assert.IsFalse(lineSegment.Contains(point));
         }
 
         [TestMethod()]
-        public void ContainsTestIntParameterFalse()
+        public void ContainsTestObjParameterCorrect()
         {
-            Assert.IsFalse(lineSegment.Contains(0));
+            LineSegment lineSegmentTwoFive = new LineSegment(2, 5);
+            LineSegment linesegmentOneTen = new LineSegment(1, 10);
+
+            Assert.IsTrue(lineSegment.Contains(lineSegmentTwoFive));
+            Assert.IsTrue(lineSegment.Contains(linesegmentOneTen));
         }
 
-        [TestMethod()]
-        public void ContainsTestObjParameter()
+        public void ContainsTestObjParameterFalse()
         {
-            LineSegment LineSegmentTwoFive = new LineSegment(2, 5);
-            LineSegment LineSegmentZeroNine = new LineSegment(0, 9);
-            LineSegment LineSegmentFiveEleven = new LineSegment(5, 11);
-            LineSegment LinesegmentOneTen = new LineSegment(1, 10);
+            LineSegment lineSegmentZeroNine = new LineSegment(0, 9);
+            LineSegment lineSegmentFiveEleven = new LineSegment(5, 11);
 
-            Assert.IsTrue(lineSegment.Contains(LineSegmentTwoFive));
-            Assert.IsTrue(lineSegment.Contains(LinesegmentOneTen));
-
-
-
+            Assert.IsFalse(lineSegment.Contains(lineSegmentZeroNine));
+            Assert.IsFalse(lineSegment.Contains(lineSegmentFiveEleven));
         }
     }
 }
