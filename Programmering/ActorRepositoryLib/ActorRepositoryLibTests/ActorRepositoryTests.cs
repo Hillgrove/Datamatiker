@@ -2,7 +2,7 @@
 namespace ActorRepositoryLib.Tests
 {
     [TestClass()]
-    public class ActorsRepositoryTests
+    public class ActorRepositoryTests
     {
         [TestMethod()]
         public void AddTest()
