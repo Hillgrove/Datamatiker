@@ -14,12 +14,12 @@ namespace ActorRepositoryLib
             return actor;
         }
 
-        public Actor? Get(int id)
+        public Actor? GetById(int id)
         {
             return _actors.Find(actor => actor.Id == id);
         }
 
-        public IEnumerable<Actor> GetAll(int? minBirtYear = null, string? name=null)
+        public IEnumerable<Actor> Get(int? minBirtYear = null, string? name=null)
         {
             IEnumerable<Actor> result = new List<Actor>(_actors);
             if (minBirtYear != null)
@@ -38,7 +38,7 @@ namespace ActorRepositoryLib
         public Actor? Update(int id, Actor actor)
         {
             actor.Validate();
-            Actor? existingActor = Get(id);
+            Actor? existingActor = GetById(id);
 
             if (existingActor == null)
             {
@@ -52,7 +52,7 @@ namespace ActorRepositoryLib
 
         public Actor? Delete(int id)
         {
-            Actor? actor = Get(id);
+            Actor? actor = GetById(id);
 
             if (actor == null)
             {
