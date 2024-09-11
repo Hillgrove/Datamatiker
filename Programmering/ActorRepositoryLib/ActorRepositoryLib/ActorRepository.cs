@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Immutable;
+
 namespace ActorRepositoryLib
 {
     public class ActorRepository
@@ -19,17 +21,35 @@ namespace ActorRepositoryLib
             return _actors.Find(actor => actor.Id == id);
         }
 
-        public IEnumerable<Actor> Get(int? minBirtYear = null, string? name=null)
+        public List<Actor> Get(int? minBirtYear = null, string? name=null, string? sortBy = null)
         {
-            IEnumerable<Actor> result = new List<Actor>(_actors);
+            List<Actor> result = new List<Actor>(_actors);
             if (minBirtYear != null)
             {
-                result = result.Where(a => a.BirthYear >= minBirtYear);
+                result = result.FindAll(a => a.BirthYear >= minBirtYear);
             }
 
             if (name != null)
             {
-                result = result.Where(a => a.Name == name);
+                result = result.FindAll(a => a.Name == name);
+            }
+
+            if (sortBy != null)
+            {
+                switch (sortBy.ToLower())
+                {
+                    case "name":
+                        result.Sort((t1, t2) => t1.Name.CompareTo(t2.Name));
+                        break;
+
+                    case "namedesc":
+                        result.Sort((t1, t2) => t2.Name.CompareTo(t1.Name));
+                        break;
+
+                    case "birthyear":
+                        result.Sort((t1, t2) => t1.BirthYear.CompareTo(t2.BirthYear));
+                        break;
+                }
             }
 
             return result;
