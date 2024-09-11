@@ -14,7 +14,7 @@ namespace ActorRepositoryLib.Tests
 
         [TestMethod()]
         public void GetByIdTest()
-        {
+        {   
             Assert.Fail();
         }
 
@@ -36,10 +36,11 @@ namespace ActorRepositoryLib.Tests
             expected.Add(actorBirthYear2002);
 
             // Act
-            List<Actor> result = actorRepository.Get(2001).ToList();
+            List<Actor> result = actorRepository.Get(2001);
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
+            //Assert.AreEqual(2, result.Count());
         }
 
         [TestMethod()]
