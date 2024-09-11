@@ -19,11 +19,20 @@ namespace ActorRepositoryLib
             return _actors.Find(actor => actor.Id == id);
         }
 
-        public IEnumerable<Actor> GetAll(int? minBirtYear = null)
+        public IEnumerable<Actor> GetAll(int? minBirtYear = null, string? name=null)
         {
-            IEnumerable<Actor> actors = new List<Actor>(_actors);
-            actors.Where(a => a.BirthYear >= minBirtYear);
-            return actors;
+            IEnumerable<Actor> result = new List<Actor>(_actors);
+            if (minBirtYear != null)
+            {
+                result = result.Where(a => a.BirthYear >= minBirtYear);
+            }
+
+            if (name != null)
+            {
+                result = result.Where(a => a.Name == name);
+            }
+
+            return result;
         }
 
         public Actor? Update(int id, Actor actor)
