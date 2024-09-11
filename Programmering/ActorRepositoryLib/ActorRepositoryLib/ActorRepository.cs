@@ -19,9 +19,10 @@ namespace ActorRepositoryLib
             return _actors.Find(actor => actor.Id == id);
         }
 
-        public IEnumerable<Actor> GetAll()
+        public IEnumerable<Actor> GetAll(int? minBirtYear = null)
         {
             IEnumerable<Actor> actors = new List<Actor>(_actors);
+            actors.Where(a => a.BirthYear >= minBirtYear);
             return actors;
         }
 
