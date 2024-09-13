@@ -52,8 +52,6 @@ namespace ActorRepositoryLib.Tests
             actorGood.Validate();
 
             // Assert
-
-
         }
     }
 }
