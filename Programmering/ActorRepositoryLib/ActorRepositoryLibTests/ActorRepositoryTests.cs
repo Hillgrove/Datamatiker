@@ -39,9 +39,18 @@ namespace ActorRepositoryLib.Tests
 
         [TestMethod()]
         public void GetByIdTest()
-        {   
+        {
+            // Arrange
+            int ActorIdExisting = actorAdam2000.Id;
+            int ActorIdNotExisting = 1000;
 
-            Assert.Fail();
+            // Act
+            Actor? existingActorResult = actorRepository.GetById(ActorIdExisting);
+            Actor? notExistingActorResult = actorRepository.GetById(ActorIdNotExisting);
+
+            // Assert
+            Assert.AreEqual(actorAdam2000, existingActorResult);
+            Assert.IsNull(notExistingActorResult);
         }
 
         [TestMethod()]
