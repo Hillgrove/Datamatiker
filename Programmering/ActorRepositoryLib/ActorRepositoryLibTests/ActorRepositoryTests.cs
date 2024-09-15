@@ -167,6 +167,7 @@ namespace ActorRepositoryLib.Tests
             //Assert.AreEqual(actorToUpdate.Name, updatedActor?.Name); // works but needs 2 asserts
             //Assert.AreEqual(actorToUpdate.BirthYear, updatedActor?.BirthYear); // works but needs 2 asserts
             Assert.IsTrue(actorToUpdate.Name == updatedActor?.Name && actorToUpdate.BirthYear == updatedActor?.BirthYear);
+            // TODO: Why is not only partially tested?
         }
 
         [TestMethod()]
