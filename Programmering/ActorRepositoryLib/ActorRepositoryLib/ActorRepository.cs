@@ -1,7 +1,7 @@
 ﻿
 namespace ActorRepositoryLib
 {
-    public class ActorRepositoryList : IActorRepository
+    public class ActorRepositoryList
     {
         private int _nextId = 1;
         private List<Actor> _actors = new();
