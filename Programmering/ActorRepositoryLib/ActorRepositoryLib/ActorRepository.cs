@@ -1,7 +1,7 @@
 ﻿
 namespace ActorRepositoryLib
 {
-    public class ActorRepository
+    public class ActorRepositoryList : IActorRepository
     {
         private int _nextId = 1;
         private List<Actor> _actors = new();
@@ -19,7 +19,7 @@ namespace ActorRepositoryLib
             return _actors.Find(actor => actor.Id == id);
         }
 
-        public List<Actor> Get(int? minBirtYear = null, string? name=null, string? sortBy = null)
+        public List<Actor> Get(int? minBirtYear = null, string? name = null, string? sortBy = null)
         {
             List<Actor> result = new List<Actor>(_actors);
             if (minBirtYear != null)
