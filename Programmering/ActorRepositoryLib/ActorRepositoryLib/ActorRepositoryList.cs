@@ -6,26 +6,27 @@ namespace ActorRepositoryLib
     public class ActorRepositoryList<T> : IRepository<T> where T : IActor
     { 
         private int _nextId = 1;
-        private List<T> _entities = new();
+        private Dictionary<int, T> _entities = new();
 
         public T Add(T entity)
         {
             entity.Validate();
             entity.Id = _nextId++;
-            _entities.Add(entity);
+            _entities.Add(entity.Id, entity);
             return entity;
         }
 
         public T? GetById(int id)
         {
-            return _entities.Find(entity => entity.Id == id);
+            _entities.TryGetValue(id, out T? entity);
+            return entity;
         }
 
         public IQueryable<T> Get(
             Expression<Func<T, bool>>? predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
         {
-            IQueryable<T> queryableData = _entities.AsQueryable();
+            IQueryable<T> queryableData = _entities.Values.AsQueryable();
 
             // Apply predicates if any
             if (predicate != null)
@@ -60,15 +61,14 @@ namespace ActorRepositoryLib
 
         public T? Delete(int id)
         {
-            T? entity = GetById(id);
-
-            if (entity == null)
+            if (_entities.Remove(id, out T? entity))
             {
-                return default(T); // null
+                return entity;
             }
-
-            _entities.Remove(entity);
-            return entity;
+            else
+            {
+                return default(T); // null for Actor objects
+            }
         }
     }
 }
