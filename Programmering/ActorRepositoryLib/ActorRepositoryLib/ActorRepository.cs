@@ -1,35 +1,46 @@
 ﻿
 namespace ActorRepositoryLib
 {
-    public class ActorRepositoryList
+    public class ActorRepositoryList<T> : IActorRepository<T> where T : IActor
     {
         private int _nextId = 1;
-        private List<Actor> _actors = new();
+        private List<T> _entities = new();
 
-        public Actor Add(Actor actor)
+        public T Add(T entity)
         {
-            actor.Validate();
-            actor.Id = _nextId++;
-            _actors.Add(actor);
-            return actor;
+            entity.Validate();
+            entity.Id = _nextId++;
+            _entities.Add(entity);
+            return entity;
         }
 
-        public Actor? GetById(int id)
+        public T? GetById(int id)
         {
-            return _actors.Find(actor => actor.Id == id);
+            return _entities.Find(entity => entity.Id == id);
         }
 
-        public List<Actor> Get(int? minBirtYear = null, string? name = null, string? sortBy = null)
+        public List<T> Get(Func<T, bool>? filter = null)
         {
-            List<Actor> result = new List<Actor>(_actors);
+            var result = _entities.AsEnumerable();
+            if (filter != null)
+            {
+                result = result.Where(filter);
+            }
+
+            return result.ToList();
+        }
+
+        public List<T> Get(int? minBirtYear = null, string? name = null, string? sortBy = null)
+        {
+            List<T> result = new List<T>(_entities);
             if (minBirtYear != null)
             {
-                result = result.FindAll(a => a.BirthYear >= minBirtYear);
+                result = result.FindAll(e => e.BirthYear >= minBirtYear);
             }
 
             if (name != null)
             {
-                result = result.FindAll(a => a.Name == name);
+                result = result.FindAll(e => e.Name == name);
             }
 
             if (sortBy != null)
@@ -53,32 +64,32 @@ namespace ActorRepositoryLib
             return result;
         }
 
-        public Actor? Update(int id, Actor actor)
+        public T? Update(int id, T entity)
         {
-            actor.Validate();
-            Actor? existingActor = GetById(id);
+            entity.Validate();
+            T? existingEntity = GetById(id);
 
-            if (existingActor == null)
+            if (existingEntity == null)
             {
-                return null;
+                return default(T); // null
             }
 
-            existingActor.Name = actor.Name;
-            existingActor.BirthYear = actor.BirthYear;
-            return existingActor;
+            existingEntity.Name = entity.Name;
+            existingEntity.BirthYear = entity.BirthYear;
+            return existingEntity;
         }
 
-        public Actor? Delete(int id)
+        public T? Delete(int id)
         {
-            Actor? actor = GetById(id);
+            T? entity = GetById(id);
 
-            if (actor == null)
+            if (entity == null)
             {
-                return null;
+                return default(T); // null
             }
 
-            _actors.Remove(actor);
-            return actor;
+            _entities.Remove(entity);
+            return entity;
         }
     }
 }
