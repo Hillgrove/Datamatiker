@@ -22,7 +22,7 @@ namespace ActorRepositoryLib
             return entity;
         }
 
-        public IQueryable<T> Get(
+        public IEnumerable<T> Get(
             Expression<Func<T, bool>>? predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
         {
@@ -41,7 +41,7 @@ namespace ActorRepositoryLib
                 queryableData = orderBy(queryableData);
             }
 
-            return queryableData;
+            return queryableData.ToList();
         }
 
         public T? Update(int id, T entity)
