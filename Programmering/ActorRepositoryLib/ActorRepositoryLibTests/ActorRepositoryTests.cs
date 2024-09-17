@@ -4,7 +4,7 @@ namespace ActorRepositoryLib.Tests
     [TestClass()]
     public class ActorRepositoryTests
     {
-        private ActorRepositoryList actorRepository = null!;
+        private ActorRepositoryList<Actor> actorRepository = null!;
         private readonly Actor actorAdam2000 = new Actor() { Name = "Adam", BirthYear = 2000 };
         private readonly Actor actorBenedict2001 = new Actor() { Name = "Benedict", BirthYear = 2001 };
         private readonly Actor actorChristine2002 = new Actor() { Name = "Christine", BirthYear = 2002 };
@@ -12,7 +12,7 @@ namespace ActorRepositoryLib.Tests
         [TestInitialize]
         public void Initialize()
         {
-            actorRepository = new ActorRepositoryList();
+            actorRepository = new ActorRepositoryList<Actor>();
             actorRepository.Add(actorAdam2000);
             actorRepository.Add(actorBenedict2001);
             actorRepository.Add(actorChristine2002);
@@ -24,13 +24,13 @@ namespace ActorRepositoryLib.Tests
         {
             // Arrange
             Actor newActor = new Actor() { Name = "David", BirthYear = 2003 };
-            int actorCountBeforeAdd = actorRepository.Get().Count;
+            int actorCountBeforeAdd = actorRepository.Get().Count();  
 
             // Act
             actorRepository.Add(newActor);
             var actorRepoAfterAdd = actorRepository.Get();
-            int actorCountAfterAdd = actorRepoAfterAdd.Count;
-            
+            int actorCountAfterAdd = actorRepoAfterAdd.Count();
+
             // Assert
             Assert.AreEqual(actorCountBeforeAdd + 1, actorCountAfterAdd);
             Assert.IsTrue(actorRepoAfterAdd.Contains(newActor));
@@ -63,7 +63,7 @@ namespace ActorRepositoryLib.Tests
             expected.Add(actorBenedict2001);
 
             // Act
-            List<Actor> result = actorRepository.Get(name: name);
+            List<Actor> result = actorRepository.Get(actor => actor.Name == name).ToList();
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
@@ -73,14 +73,12 @@ namespace ActorRepositoryLib.Tests
         public void GetTestNameNull()
         {
             // Arrange
-            string? name = null;
+            string? nullName = null;
             List<Actor> expected = new List<Actor>();
-            expected.Add(actorAdam2000);
-            expected.Add(actorBenedict2001);
-            expected.Add(actorChristine2002);
+            Actor nullNameActor = new Actor() { Name = null, BirthYear = 1980 };
 
             // Act
-            List<Actor> result = actorRepository.Get(name: name);
+            List<Actor> result = actorRepository.Get(actor => actor.Name == nullName).ToList();
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
@@ -89,12 +87,13 @@ namespace ActorRepositoryLib.Tests
         [TestMethod()]
         public void GetTestByBirthYear()
         {
+            int birthYear = 2001;
             List<Actor> expected = new List<Actor>();
             expected.Add(actorBenedict2001);
             expected.Add(actorChristine2002);
 
             // Act
-            List<Actor> result = actorRepository?.Get(2001) ?? new List<Actor>();
+            List<Actor> result = actorRepository.Get(actor => actor.BirthYear >= birthYear).ToList();
             // TODO: Why is not only partially tested?
 
             // Assert
@@ -105,14 +104,13 @@ namespace ActorRepositoryLib.Tests
         public void GetTestSortByName()
         {
             // Arrange
-            string sortBy = "name";
             List<Actor> expected = new List<Actor>();
             expected.Add(actorAdam2000);
             expected.Add(actorBenedict2001);
             expected.Add(actorChristine2002);
 
             // Act
-            List<Actor> result = actorRepository.Get(sortBy: sortBy);
+            List<Actor> result = actorRepository.Get(orderBy: q => q.OrderBy(actor => actor.Name)).ToList();
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
@@ -122,14 +120,13 @@ namespace ActorRepositoryLib.Tests
         public void GetTestSortByNameDesc()
         {
             // Arrange
-            string sortBy = "namedesc";
             List<Actor> expected = new List<Actor>();
             expected.Add(actorChristine2002);
             expected.Add(actorBenedict2001);
             expected.Add(actorAdam2000);
 
             // Act
-            List<Actor> result = actorRepository.Get(sortBy: sortBy);
+            List<Actor> result = actorRepository.Get(orderBy: q => q.OrderByDescending(actor => actor.Name)).ToList();
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
@@ -139,15 +136,13 @@ namespace ActorRepositoryLib.Tests
         public void GetTestSortByBirthYear()
         {
             // Arrange
-            string sortBy = "birthyear";
             List<Actor> expected = new List<Actor>();
             expected.Add(actorAdam2000);
             expected.Add(actorBenedict2001);
             expected.Add(actorChristine2002);
 
             // Act
-            List<Actor> result = actorRepository.Get(sortBy: sortBy);
-
+            List<Actor> result = actorRepository.Get(orderBy: q => q.OrderBy(actor => actor.BirthYear)).ToList();
             // Assert
             CollectionAssert.AreEqual(expected, result);
         }
@@ -175,13 +170,10 @@ namespace ActorRepositoryLib.Tests
         {
             // Arrange
             Actor actorToUpdate = new Actor() { Name = "David", BirthYear = 2003 };
-            int id = actorRepository.Get().Count + 1; // Id that doesn't exist
+            int id = actorRepository.Get().Count() + 1; // Id that doesn't exist
 
-            // Act
-            Actor? updatedActor = actorRepository.Update(id, actorToUpdate);
-
-            // Arrange
-            Assert.IsNull(updatedActor);
+            // Act and Assert
+            Assert.ThrowsException<KeyNotFoundException>(() => actorRepository.Update(id, actorToUpdate));
         }
 
         [TestMethod()]
@@ -191,14 +183,14 @@ namespace ActorRepositoryLib.Tests
             // Arrange
             Actor actorToDelete = actorAdam2000;
             int id = actorToDelete.Id;
-            int length = actorRepository.Get().Count;
+            int length = actorRepository.Get().Count();
 
             // Act
             Actor? deletedActor = actorRepository.Delete(id);
             var updatedActors = actorRepository.Get();
 
             // Assert
-            Assert.AreEqual(length - 1, updatedActors.Count);
+            Assert.AreEqual(length - 1, updatedActors.Count());
             Assert.AreEqual(actorToDelete, deletedActor);
             Assert.IsFalse(updatedActors.Contains(actorToDelete));
         }
@@ -207,15 +199,15 @@ namespace ActorRepositoryLib.Tests
         public void DeleteTestActorNull()
         {
             // Arrange
-            int id = actorRepository.Get().Count + 1; // Id that doesn't exist
-            int length = actorRepository.Get().Count;
+            int id = actorRepository.Get().Count() + 1; // Id that doesn't exist
+            int length = actorRepository.Get().Count();
 
             // Act
             Actor? deletedActor = actorRepository.Delete(id);
             var updatedActors = actorRepository.Get();
 
             // Assert
-            Assert.AreEqual(length, updatedActors.Count);
+            Assert.AreEqual(length, updatedActors.Count());
             Assert.IsNull(deletedActor);
         }
     }
