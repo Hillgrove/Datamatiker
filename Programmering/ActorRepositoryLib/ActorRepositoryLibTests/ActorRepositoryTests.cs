@@ -4,7 +4,7 @@ namespace ActorRepositoryLib.Tests
     [TestClass()]
     public class ActorRepositoryTests
     {
-        private ActorRepositoryList<Actor> actorRepository = null!;
+        private ActorRepositoryDictionary<Actor> actorRepository = null!;
         private readonly Actor actorAdam2000 = new Actor() { Name = "Adam", BirthYear = 2000 };
         private readonly Actor actorBenedict2001 = new Actor() { Name = "Benedict", BirthYear = 2001 };
         private readonly Actor actorChristine2002 = new Actor() { Name = "Christine", BirthYear = 2002 };
@@ -12,7 +12,7 @@ namespace ActorRepositoryLib.Tests
         [TestInitialize]
         public void Initialize()
         {
-            actorRepository = new ActorRepositoryList<Actor>();
+            actorRepository = new ActorRepositoryDictionary<Actor>();
             actorRepository.Add(actorAdam2000);
             actorRepository.Add(actorBenedict2001);
             actorRepository.Add(actorChristine2002);

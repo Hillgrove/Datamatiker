@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace ActorRepositoryLib
 {
-    public class ActorRepositoryList<T> : IRepository<T> where T : IActor
+    public class ActorRepositoryDictionary<T> : IRepository<T> where T : IActor
     { 
         private int _nextId = 1;
         private Dictionary<int, T> _entities = new();
