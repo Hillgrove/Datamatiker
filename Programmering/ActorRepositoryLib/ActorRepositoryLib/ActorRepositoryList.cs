@@ -22,27 +22,25 @@ namespace ActorRepositoryLib
         }
 
         public IQueryable<T> Get(
-            Expression<Func<T, bool>>[]? predicates = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>>? sortBy = null)
+            Expression<Func<T, bool>>? predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
         {
             IQueryable<T> queryableData = _entities.AsQueryable();
 
             // Apply predicates if any
-            if (predicates != null)
+            if (predicate != null)
             {
-                foreach (var predicate in predicates)
-                {
-                    queryableData = queryableData.Where(predicate);
-                }
+                queryableData = queryableData.Where(predicate);
+                
             }
 
             // Apply sorting if any
-            if (sortBy != null)
+            if (orderBy != null)
             {
-                queryableData = sortBy(queryableData);
+                queryableData = orderBy(queryableData);
             }
 
-            return queryableData.AsEnumerable().AsQueryable();
+            return queryableData;
         }
 
         public T? Update(int id, T entity)
@@ -52,7 +50,7 @@ namespace ActorRepositoryLib
 
             if (existingEntity == null)
             {
-                return default(T); // null
+                throw new KeyNotFoundException($"Entity with ID {id} not found.");
             }
 
             existingEntity.Name = entity.Name;
