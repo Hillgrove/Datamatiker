@@ -24,7 +24,7 @@ namespace ActorRepositoryLib
         {
             if (BirthYear < 1820 || BirthYear > DateTime.Now.Year)
             {
-                throw new ArgumentOutOfRangeException(nameof(BirthYear), "Birth year must be between 1820 and the current year.");
+                throw new ArgumentOutOfRangeException(nameof(BirthYear), "Birth year must be between 1820 and now.");
             }
         }
 
