@@ -94,7 +94,6 @@ namespace ActorRepositoryLib.Tests
 
             // Act
             List<Actor> result = actorRepository.Get(actor => actor.BirthYear >= birthYear).ToList();
-            // TODO: Why is not only partially tested?
 
             // Assert
             CollectionAssert.AreEqual(expected, result);
