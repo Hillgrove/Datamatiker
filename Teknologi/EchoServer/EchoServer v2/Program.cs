@@ -14,11 +14,11 @@ while (true)
 {
     // Establish connection/socket
     TcpClient socket = listener.AcceptTcpClient();
-    Task.Run(() => HandleClient(socket));
+    Task.Run(() => HandleClient(socket)); // TODO: Not awaited
 }
 
 // Stopping server
-listener.Stop();  // Currently not reached
+listener.Stop();  // TODO: Unreachable code
 
 
 void HandleClient(TcpClient socket)
@@ -28,20 +28,18 @@ void HandleClient(TcpClient socket)
     StreamReader reader = new StreamReader(ns);
     StreamWriter writer = new StreamWriter(ns);
 
-    bool socketActive = true;
-    while (socketActive)
+    while (socket.Connected)
     {
         // Reading what the client sends
-        string message = reader.ReadLine();
+        string? message = reader.ReadLine();
         Console.WriteLine($"Client sent: {message}"); // for debugging purposes
 
-        if (message == "quit")
+        if (message == "stop")
         {
-            socketActive = false;
             Console.WriteLine($"Debug: Closing down connection!"); // for debugging purposes
             writer.WriteLine("Closing down connection!");
             writer.Flush();
-            break;
+            socket.Close();
         }
 
         // Writing back/echo to the client
