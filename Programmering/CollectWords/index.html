@@ -11,6 +11,19 @@
     <title>CollectWords</title>
 </head>
 <body>
+
+    <!-- user interface -->
+    
+    <div id="app">
+        <input type="text" placeholder="Type a word">
+        <button @click="Save(word)">Save</button>
+        <button @click="Show">Show</button>
+        <button>Clear</button>
+
+        <p v-if="ShowMessage">{{ Message }}</p>
+    </div>
+    
+
     
     <!-- import script -->
     <script src="index.js"></script>
