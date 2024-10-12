@@ -6,11 +6,33 @@
     
     <!-- importing Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        #app {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
     
-    <title>VUE Calculator</title>
+    <title>Vue Calculator</title>
 </head>
 <body>
 
+<h1>Vue Calculator</h1>
+<div id="app">
+    <input v-model.number="number1" type="number" placeholder="type a number" id="number1">
+    <select v-model="operation" name="operation" id="operation">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input v-model.number="number2" type="number" placeholder="type a number" id="number2">
+    <button @click="calculate()">=</button>
+    <div>{{ result }}</div>
+
+</div>
 
 <script src="index.js"></script>
 </body>
