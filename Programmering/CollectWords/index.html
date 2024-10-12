@@ -4,27 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- import Vue JS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <title>CollectWords</title>
+    <title>Collect Words</title>
+
+    <style>
+        button {
+            margin-left: 5px;
+        }
+    </style>
 </head>
 <body>
 
     <!-- user interface -->
-    
+    <h1>Collect Words</h1>
     <div id="app">
-        <input type="text" placeholder="Type a word">
-        <button @click="Save(word)">Save</button>
-        <button @click="Show">Show</button>
-        <button>Clear</button>
+        <input v-model="word" type="text" placeholder="Type a word" id="wordInput">
+        <button @click="Save(word)" id="saveButton">Save</button>
+        <button @click="Show" id="showButton">Show</button>
+        <button @click="Clear" id="clearButton">Clear</button>
 
-        <p v-if="ShowMessage">{{ Message }}</p>
+        <div id="output">{{ message }}</div>
     </div>
-    
 
-    
     <!-- import script -->
     <script src="index.js"></script>
 </body>
