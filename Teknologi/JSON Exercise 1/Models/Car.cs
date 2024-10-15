@@ -25,7 +25,6 @@ namespace JSON_Exercise_1.Models
             Mileage = mileage;
         }
 
-
         public override string ToString()
         {
             return $"Brand: {Brand} - Model: {Model} - Color: {Color} - Mileage: {Mileage}";

@@ -4,7 +4,7 @@ using JSON_Exercise_1.Models;
 
 namespace JSON_Exercise_1.Solutions
 {
-    public class JsonStringSerialization
+    public class JsonStringDeserialization
     {
         private string? _brand;
         private string? _model;
@@ -28,20 +28,13 @@ namespace JSON_Exercise_1.Solutions
                 }
             }
 
-            Car newCar = new Car(_brand, _model, _color, _mileage);
-            Console.WriteLine("\nThis is your new car:");
-            Console.WriteLine(newCar);
+            Car carA = new Car(_brand, _model, _color, _mileage);
+            string jsonCarA = JsonSerializer.Serialize(carA);
+            Car? carB = JsonSerializer.Deserialize<Car>(jsonCarA);
 
             Console.WriteLine();
-
-            string jsonExpected = $$"""{"Brand":"{{newCar.Brand}}","Model":"{{newCar.Model}}","Color":"{{newCar.Color}}","Mileage":{{newCar.Mileage}}}""";
-            string jsonCar = JsonSerializer.Serialize(newCar);
-
-            Console.Write(jsonExpected);
-            Console.WriteLine(" - Expected JSON string");
-            Console.Write(jsonCar);
-            Console.WriteLine(" - Actual JSON string");
-
+            Console.WriteLine($"carA: {carA}");
+            Console.WriteLine($"carB: {carB}");
         }
     }
 }
