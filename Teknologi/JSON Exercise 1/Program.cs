@@ -1,37 +1,23 @@
 ﻿
-using JSON_Exercise_1.Models;
-using System.Text.Json;
+using JSON_Exercise_1.Solutions;
 
-string? brand;
-string? model;
-string? color;
-int mileage;
+const int SOLUTION_TO_RUN = 2;
 
-Console.Write("Type car brand: ");
-brand = Console.ReadLine();
-Console.Write("Type car model: ");
-model = Console.ReadLine();
-Console.Write("Type car color: ");
-color = Console.ReadLine();
-Console.Write("Type car mileage: ");
-if (!int.TryParse(Console.ReadLine(), out mileage))
+switch (SOLUTION_TO_RUN)
 {
-    if (mileage < 0)
-    {
-        mileage = -1;
-    }
+	case 1:
+        new JsonStringSerialization().Run();
+		break;
+	case 2:
+        new JsonListSerialization().Run();
+		break;
+    default:
+        Console.WriteLine("Invalid Solution Specified");
+		break;
 }
 
-Car newCar = new Car(brand, model, color, mileage);
-Console.WriteLine("\nThis is your new car:");
-Console.WriteLine(newCar);
-
-Console.WriteLine();
-
-string jsonExpected = $$"""{"Brand":"{{newCar.Brand}}","Model":"{{newCar.Model}}","Color":"{{newCar.Color}}","Mileage":{{newCar.Mileage}}}""";
-string jsonCar = JsonSerializer.Serialize(newCar);
-
-Console.Write(jsonExpected);
-Console.WriteLine(" - Expected JSON string");
-Console.Write(jsonCar);
-Console.WriteLine(" - Actual JSON string");
+enum Solutions
+{
+    JSON_STRING_SERIALIZATION = 1,
+    JSON_LIST_SERIALIZATION = 2
+}
