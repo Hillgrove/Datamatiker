@@ -1,5 +1,4 @@
 using PokemonLib;
-using YamlDotNet.Serialization.ObjectGraphVisitors;
 
 var builder = WebApplication.CreateBuilder(args);
 
