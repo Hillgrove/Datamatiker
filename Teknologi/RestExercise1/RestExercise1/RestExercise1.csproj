@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="nswag.aspnetcore" Version="14.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="PokemonLib">
       <HintPath>E:\- Repos -\easjmove\PokemonLib\PokemonLib\bin\Debug\net8.0\PokemonLib.dll</HintPath>
     </Reference>
