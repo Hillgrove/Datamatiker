@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Http; // remove after to see what uses this
+
+using Microsoft.AspNetCore.Mvc;
 using PokemonLib;
 
 namespace RestExercise2.Controllers
@@ -17,38 +20,107 @@ namespace RestExercise2.Controllers
         }
 
         // GET: api/<PokemonsController>
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-        public IEnumerable<Pokemon> Get()
+        public ActionResult<IEnumerable<Pokemon>> Get()
         {
-            return _repository.GetAll();
+            List<Pokemon> pokemons = _repository.GetAll();
+            return Ok(pokemons);
         }
 
         // GET api/<PokemonsController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
-        public Pokemon Get(int id)
+        public ActionResult<Pokemon> Get(int id)
         {
-            return _repository.GetByID(id);
+            Pokemon? foundPokemon = _repository.GetByID(id);
+            if (foundPokemon == null)
+            {
+                return NotFound($"Pokemon with ID {id} not found.");
+            }
+
+            return Ok(foundPokemon);
         }
 
         // POST api/<PokemonsController>
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-        public Pokemon Post([FromBody] Pokemon value)
+        public ActionResult<Pokemon> Post([FromBody] Pokemon newPokemon)
         {
-            return _repository.Add(value);
+            try
+            {
+                var createdPokemon = _repository.Add(newPokemon);
+                //return Created($"/{pokemon.Id}", pokemon); // Hardcoded path - needs to be changed if API logic changes
+                return CreatedAtAction(nameof(Get), new { id = createdPokemon.Id, createdPokemon }); // dynamic path - updates automatically
+            }
+
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest($"Cannot create pokemon. {ex.Message}");
+            }
+
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest($"Cannot create pokemon. {ex.Message}");
+            }
+
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
+            }
         }
 
         // PUT api/<PokemonsController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut("{id}")]
-        public Pokemon Put(int id, [FromBody] Pokemon value)
+        public ActionResult<Pokemon> Put(int id, [FromBody] Pokemon updatedPokemon)
         {
-            return _repository.Update(id, value);
+            try
+            {
+                var pokemon = _repository.Update(id, updatedPokemon);
+                if (pokemon == null)
+                {
+                    return NotFound($"Pokemon with ID {id} not found.");
+                }
+
+                return Ok(pokemon);
+            }
+
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest($"Cannot create pokemon. {ex.Message}");
+            }
+
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest($"Cannot create pokemon. {ex.Message}");
+            }
+
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
+            }
         }
 
         // DELETE api/<PokemonsController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
-        public Pokemon Delete(int id)
+        public ActionResult<Pokemon> Delete(int id)
         {
-            return _repository.Delete(id);
+            var deletedPokemon = _repository.Delete(id);            
+            if (deletedPokemon == null)
+            {
+                return NotFound($"Pokemon with ID {id} not found.");
+            }
+
+            return Ok(deletedPokemon);
         }
     }
 }
