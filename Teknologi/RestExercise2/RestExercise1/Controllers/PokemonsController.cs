@@ -1,7 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http; // remove after to see what uses this
-
 using Microsoft.AspNetCore.Mvc;
 using PokemonLib;
 
@@ -21,6 +19,7 @@ namespace RestExercise2.Controllers
         }
 
         // GET: api/<PokemonsController>
+        [EnableCors("AllowAll")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         public ActionResult<IEnumerable<Pokemon>> Get()
@@ -30,6 +29,7 @@ namespace RestExercise2.Controllers
         }
 
         // GET api/<PokemonsController>/5
+        [EnableCors("AllowAll")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
@@ -45,7 +45,6 @@ namespace RestExercise2.Controllers
         }
 
         // POST api/<PokemonsController>
-        [DisableCors]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -111,7 +110,6 @@ namespace RestExercise2.Controllers
         }
 
         // DELETE api/<PokemonsController>/5
-        [DisableCors]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]

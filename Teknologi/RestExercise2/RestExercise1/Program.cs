@@ -1,16 +1,22 @@
 using PokemonLib;
 
-const string ALLOW_ALL_POLICY = "AllowAll";
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: ALLOW_ALL_POLICY,
+    options.AddPolicy(name: "AllowAll",
                       policy =>
                       {
                           policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                      });
+
+    options.AddPolicy(name: "AllowOnlyHost",
+                      policy =>
+                      {
+                          policy.WithOrigins("https://hill-pokemonapi.azurewebsites.net")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
                       });
 });
 
@@ -27,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUi();
 }
 
-app.UseCors(ALLOW_ALL_POLICY);
+app.UseCors("AllowOnlyHost");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
