@@ -21,7 +21,7 @@
     <!-- user interface -->
     <h1>Collect Words</h1>
     <div id="app">
-        <input v-model="word" type="text" placeholder="Type a word" id="wordInput">
+        <input v-model="word" id="wordInput" type="text" placeholder="Type a word">
         <button @click="Save(word)" id="saveButton">Save</button>
         <button @click="Show" id="showButton">Show</button>
         <button @click="Clear" id="clearButton">Clear</button>

@@ -1,15 +1,11 @@
-using OpenQA.Selenium.Chrome;
-
-namespace SeleniumDocs.Hello;
-
-public static class HelloSelenium
+namespace SeleniumTest
 {
-    public static void Main()
+    [TestClass]
+    public class UnitTest1
     {
-        var driver = new ChromeDriver();
-
-        driver.Navigate().GoToUrl("https://selenium.dev");
-
-        driver.Quit();
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
     }
 }
