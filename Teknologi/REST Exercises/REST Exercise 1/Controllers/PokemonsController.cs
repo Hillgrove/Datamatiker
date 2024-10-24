@@ -1,43 +1,56 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PokemonLib;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace REST__Exercise_1.Controllers
+namespace REST_Exercise_1.Controllers
 {
+
     [Route("api/[controller]")]
+    // the controller is available on ..../api/books
+    // [controller] means the name of the controller minus "Controller"
     [ApiController]
     public class PokemonsController : ControllerBase
     {
-        // GET: api/<PokemonsController>
+        private readonly PokemonsRepository _repository;
+
+        public PokemonsController(PokemonsRepository repository)
+        {
+            _repository = repository;
+        }
+
+        // GET: api/<BooksController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Pokemon> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _repository.GetAll();
         }
 
-        // GET api/<PokemonsController>/5
+        // GET api/<BooksController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Pokemon Get(int id)
         {
-            return "value";
+            return _repository.GetByID(id);
         }
 
-        // POST api/<PokemonsController>
+        // POST api/<BooksController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Pokemon Post([FromBody] Pokemon value)
         {
+            return _repository.Add(value);
         }
 
-        // PUT api/<PokemonsController>/5
+        // PUT api/<BooksController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Pokemon Put(int id, [FromBody] Pokemon value)
         {
+            return _repository.Update(id, value);
         }
 
-        // DELETE api/<PokemonsController>/5
+        // DELETE api/<BooksController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Pokemon Delete(int id)
         {
+            return _repository.Delete(id);
         }
-    }
+    }       
 }
