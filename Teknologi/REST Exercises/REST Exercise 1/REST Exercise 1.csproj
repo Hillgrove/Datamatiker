@@ -7,4 +7,8 @@
     <RootNamespace>REST__Exercise_1</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
