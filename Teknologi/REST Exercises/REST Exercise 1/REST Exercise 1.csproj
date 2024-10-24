@@ -11,4 +11,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="PokemonLib">
+      <HintPath>..\..\..\..\..\easjmove\PokemonLib\PokemonLib\bin\Debug\net8.0\PokemonLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
