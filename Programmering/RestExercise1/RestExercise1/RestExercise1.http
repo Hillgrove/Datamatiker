@@ -1,6 +1,0 @@
-@RestExercise1_HostAddress = http://localhost:5005
-
-GET {{RestExercise1_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
