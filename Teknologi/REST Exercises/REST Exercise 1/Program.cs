@@ -1,8 +1,11 @@
+using PokemonLib;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<PokemonsRepository>(new PokemonsRepository());
 
 var app = builder.Build();
 
