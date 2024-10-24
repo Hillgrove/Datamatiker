@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -10,9 +10,11 @@ using OpenQA.Selenium.Support.UI;
 namespace SeleniumTest
 {
     [TestClass]
-    public class SeleniumTest
+    public class CalculatorTests
     {
         private static readonly string DriverDirectory = "E:\\- Cloud -\\Google Drive\\Files\\Documents\\Uddannelse\\- Datamatiker -\\- Programmering -\\- Misc -\\WebDrivers";
+        private static string url = "D:\\- Repos -\\Datamatiker\\Hillgrove\\Programmering\\VUE-Calculator\\index.html";
+        
         // Download drivers to your driver folder.
         // Driver version must match your browser version.
         // http://chromedriver.chromium.org/downloads
@@ -25,7 +27,6 @@ namespace SeleniumTest
             //_driver = new ChromeDriver(DriverDirectory); // fast
             //_driver = new FirefoxDriver(DriverDirectory);  // slow
             _driver = new EdgeDriver(DriverDirectory); //  fast
-                                                       // driver file must be renamed to MicrosoftWebDriver.exe
         }
 
         [ClassCleanup]
@@ -35,17 +36,20 @@ namespace SeleniumTest
         }
 
         [TestMethod]
-        public void TestMethod()
+        public void TestTitle()
         {
             // Arrange
-            string url = "E:\\- Repos -\\Hillgrove\\Datamatiker\\Programmering\\CollectWords\\index.html";
-            //string url = "https://anbo-sayhello.azurewebsites.net/";
-            //string url = "http://localhost:5502/index.htm";
+
             _driver.Navigate().GoToUrl(url);
 
             // Act and Assert
-            Assert.AreEqual("Collect Words", _driver.Title);
+            Assert.AreEqual("Vue Calculator", _driver.Title);
 
+        }
+
+        [TestMethod]
+        public void TestAddition()
+        {
             // Act
             IWebElement inputElement = _driver.FindElement(By.Id("wordInput"));
             inputElement.SendKeys("Selenium");
