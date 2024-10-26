@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using PokemonLib;
 
 
@@ -51,6 +52,7 @@ namespace REST_Exercise_3.Controllers
         }
 
         // POST api/<PokemonsController>
+        [EnableCors("RestrictedPolicy")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -86,6 +88,7 @@ namespace REST_Exercise_3.Controllers
         }
 
         // PUT api/<PokemonsController>/5
+        [EnableCors("RestrictedPolicy")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -118,6 +121,7 @@ namespace REST_Exercise_3.Controllers
         }
 
         // DELETE api/<PokemonsController>/5
+        [EnableCors("RestrictedPolicy")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
