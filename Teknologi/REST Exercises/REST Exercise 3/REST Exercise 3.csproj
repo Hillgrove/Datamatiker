@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="PokemonLib">
       <HintPath>..\..\..\..\..\easjmove\PokemonLib\PokemonLib\bin\Debug\net8.0\PokemonLib.dll</HintPath>
     </Reference>
