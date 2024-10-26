@@ -44,7 +44,7 @@ namespace REST_Exercise_2.Controllers
 
             if (pokemon == null)
             {
-                return NotFound("No such class, id: {id}");
+                return NotFound($"No pokemon found with id: {id}");
             }
 
             return Ok(pokemon);
@@ -58,11 +58,6 @@ namespace REST_Exercise_2.Controllers
         public ActionResult<Pokemon> Post([FromBody] Pokemon value)
         {
             var createdPokemon = new Pokemon();
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             try
             {
@@ -78,9 +73,9 @@ namespace REST_Exercise_2.Controllers
             }
 
             //if (Name == null) throw new ArgumentNullException();
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
-                return BadRequest($"Name cannot be null. {ex}");
+                return BadRequest($"Name cannot be null.");
             }
 
             //if (Name.Length <= 2) throw new ArgumentOutOfRangeException("specifik besked");
@@ -97,11 +92,6 @@ namespace REST_Exercise_2.Controllers
         [HttpPut("{id}")]
         public ActionResult<Pokemon> Put(int id, [FromBody] Pokemon value)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             try
             {
                 Pokemon? updatedPokemon = _repository.Update(id, value);
@@ -115,9 +105,9 @@ namespace REST_Exercise_2.Controllers
             }
 
             //if (Name == null) throw new ArgumentNullException();
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
-                return BadRequest($"Name cannot be null. {ex}");
+                return BadRequest($"Name cannot be null.");
             }
 
             //if (Name.Length <= 2) throw new ArgumentOutOfRangeException("specifik besked");
