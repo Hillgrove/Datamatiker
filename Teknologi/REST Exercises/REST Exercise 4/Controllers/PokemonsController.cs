@@ -23,16 +23,61 @@ namespace REST_Exercise_4.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
-        public ActionResult<IEnumerable<Pokemon>> Get()
+        public ActionResult<IEnumerable<Pokemon>> Get([FromHeader(Name = "amount")] int? amount)
         {
-            IEnumerable<Pokemon> pokemons = _repository.GetAll();
+            IEnumerable<Pokemon> allPokemons = _repository.GetAll();
+            int totalAmount = allPokemons.Count();
 
-            if (!pokemons.Any())
+            Response.Headers.Append("Total-Amount", totalAmount.ToString());
+
+            if (!allPokemons.Any())
             {
                 return NoContent();
             }
 
-            return Ok(pokemons);
+            if (amount.HasValue && amount.Value > 0)
+            {
+                var selectedPokemons = allPokemons.Take(amount.Value); // .Value as we've already made sure amount is not null, so it won't throw an exception
+                return Ok(selectedPokemons);
+            }
+
+            return Ok(allPokemons);
+        }
+
+        // GET for Pagination: api/pokemons/paginated
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status416RangeNotSatisfiable)] // When startIndex is out of range
+        [HttpGet("paginated")]
+        public ActionResult<IEnumerable<Pokemon>> GetPaginated(
+            [FromHeader(Name = "startIndex")] int? startIndex,
+            [FromHeader(Name = "amount")] int? amount)
+        {
+            if (startIndex == null || startIndex < 0)
+            {
+                return BadRequest("The 'startIndex' header is missing or invalid. It must be a non-negative integer.");
+            }
+
+            if (amount == null || amount <= 0)
+            {
+                return BadRequest("The 'amount' header is missing or invalid. It must be a positive integer.");
+            }
+
+            var allPokemons = _repository.GetAll();
+            int totalAmount = allPokemons.Count();
+
+            if (startIndex >= totalAmount)
+            {
+                return StatusCode(StatusCodes.Status416RequestedRangeNotSatisfiable, "The 'startIndex' is beyond the total amount of items.");
+            }
+
+            Response.Headers.Append("Total-Amount", totalAmount.ToString());
+
+            var paginatedPokemons = allPokemons
+                .Skip(startIndex.Value)
+                .Take(amount.Value);
+
+            return Ok(paginatedPokemons);
         }
 
         // GET api/<PokemonsController>/5
