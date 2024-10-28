@@ -44,6 +44,7 @@ namespace REST_Exercise_4.Controllers
             return Ok(allPokemons);
         }
 
+
         // GET for Pagination: api/pokemons/paginated
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,6 +81,7 @@ namespace REST_Exercise_4.Controllers
             return Ok(paginatedPokemons);
         }
 
+
         // GET api/<PokemonsController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -95,6 +97,7 @@ namespace REST_Exercise_4.Controllers
 
             return Ok(pokemon);
         }
+
 
         // POST api/<PokemonsController>
         [EnableCors("RestrictedPolicy")]
@@ -132,6 +135,7 @@ namespace REST_Exercise_4.Controllers
             }
         }
 
+
         // PUT api/<PokemonsController>/5
         [EnableCors("RestrictedPolicy")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -164,6 +168,7 @@ namespace REST_Exercise_4.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         // DELETE api/<PokemonsController>/5
         [EnableCors("RestrictedPolicy")]
