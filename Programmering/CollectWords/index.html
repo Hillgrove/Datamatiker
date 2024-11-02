@@ -26,7 +26,24 @@
         <button @click="Show" id="showButton">Show</button>
         <button @click="Clear" id="clearButton">Clear</button>
 
-        <div id="output">{{ message }}</div>
+        <div id="output">
+            <p v-if="message === 'empty' || message === null">
+                {{ message }}
+            </p>
+            <table v-else>
+                <thead>
+                    <tr>
+                        <th>Words saved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="word in message">
+                        <td>{{ word }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
     <!-- import script -->

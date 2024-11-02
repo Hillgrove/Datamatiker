@@ -9,18 +9,22 @@ const app = Vue.createApp({
 
     methods: {
         Save(word) {
-            this.words.push(word)
+            if (word) {
+                this.words.push(word)
+                this.word = ""
+            }
+            
         },
         Clear() {
             this.words = []
             this.message = null
         },
         Show() {
-            if (this.words == null || this.words.length == 0) {
+            if (this.words.length == 0) {
                 this.message = "empty"
             }
             else {
-                this.message = this.words.toString()
+                this.message = [...this.words];
             }
         }
     }
