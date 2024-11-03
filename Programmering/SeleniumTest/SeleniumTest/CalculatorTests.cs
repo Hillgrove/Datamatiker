@@ -13,7 +13,7 @@ namespace SeleniumTest
     public class CalculatorTests
     {
         private static readonly string DriverDirectory = "E:\\- Cloud -\\Google Drive\\Files\\Documents\\Uddannelse\\- Datamatiker -\\- Programmering -\\- Misc -\\WebDrivers";
-        private static string url = "D:\\- Repos -\\Datamatiker\\Hillgrove\\Programmering\\VUE-Calculator\\index.html";
+        private static string url = "E:\\- Repos -\\Hillgrove\\Datamatiker\\Programmering\\VUE-Calculator\\index.html";
         
         // Download drivers to your driver folder.
         // Driver version must match your browser version.
@@ -24,9 +24,9 @@ namespace SeleniumTest
         [ClassInitialize]
         public static void Setup(TestContext context)
         {
-            //_driver = new ChromeDriver(DriverDirectory); // fast
+            _driver = new ChromeDriver(DriverDirectory); // fast
             //_driver = new FirefoxDriver(DriverDirectory);  // slow
-            _driver = new EdgeDriver(DriverDirectory); //  fast
+            //_driver = new EdgeDriver(DriverDirectory); //  fast
         }
 
         [ClassCleanup]
@@ -50,21 +50,34 @@ namespace SeleniumTest
         [TestMethod]
         public void TestAddition()
         {
+            // Arrange
+            _driver.Navigate().GoToUrl(url);
+
             // Act
-            IWebElement inputElement = _driver.FindElement(By.Id("wordInput"));
-            inputElement.SendKeys("Selenium");
+            // Input 1
+            IWebElement input1Element = _driver.FindElement(By.Id("number1"));
+            input1Element.SendKeys("1000");
 
-            IWebElement saveButtonElement = _driver.FindElement(By.Id("saveButton"));
-            saveButtonElement.Click();
+            // Operator
+            IWebElement selectOperatorElement = _driver.FindElement(By.Id("operation"));
+            SelectElement select = new SelectElement(selectOperatorElement);
+            select.SelectByValue("+");
 
-            IWebElement showButtonElement = _driver.FindElement(By.Id("showButton"));
-            showButtonElement.Click();
 
-            IWebElement outputElement = _driver.FindElement(By.Id("output"));
-            string text = outputElement.Text;
+            // Input 2
+            IWebElement input2Element = _driver.FindElement(By.Id("number2"));
+            input2Element.SendKeys("337");
+
+            // Calculate
+            IWebElement CalculateButtonElement = _driver.FindElement(By.Id("calculate"));
+            CalculateButtonElement.Click();
+
+            // Result
+            IWebElement outputElement = _driver.FindElement(By.Id("result"));
+            string result = outputElement.Text;
 
             // Assert
-            Assert.AreEqual("Selenium", text);
+            Assert.AreEqual("1337", result);
         }
     }
 }

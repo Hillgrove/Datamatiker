@@ -13,6 +13,8 @@ namespace SeleniumTest
     public class CollectWordsTests
     {
         private static readonly string DriverDirectory = "E:\\- Cloud -\\Google Drive\\Files\\Documents\\Uddannelse\\- Datamatiker -\\- Programmering -\\- Misc -\\WebDrivers";
+        private static string url = "E:\\- Repos -\\Hillgrove\\Datamatiker\\Programmering\\CollectWords\\index.html";
+        
         // Download drivers to your driver folder.
         // Driver version must match your browser version.
         // http://chromedriver.chromium.org/downloads
@@ -37,7 +39,6 @@ namespace SeleniumTest
         public void TestMethod()
         {
             // Arrange
-            string url = "E:\\- Repos -\\Hillgrove\\Datamatiker\\Programmering\\CollectWords\\index.html";
             _driver.Navigate().GoToUrl(url);
 
             // Act and Assert
@@ -57,7 +58,7 @@ namespace SeleniumTest
             string text = outputElement.Text;
 
             // Assert
-            Assert.AreEqual("Selenium", text);
+            Assert.AreEqual("Words saved\r\nSelenium", text); // bandaid fix as the collectwords app was changed to output list rather than a string
         }
     }
 }
