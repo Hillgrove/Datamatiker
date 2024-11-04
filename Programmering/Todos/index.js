@@ -32,7 +32,7 @@ Vue.createApp({
 
         cleanList() {
             this.todos = []
-            this.error = []
+            this.error = null
         },
 
         async getByUserId(userId) {
