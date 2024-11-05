@@ -35,7 +35,7 @@ Vue.createApp({
             console.log("Get books using url: " + url)
             try {
                 const response = await axios.get(url)
-                this.books = await response.data
+                this.books = response.data
             }
 
             catch (ex) {
@@ -54,7 +54,7 @@ Vue.createApp({
 
                 try {
                     const response = await axios.get(url)
-                    this.singleBook = await response.data
+                    this.singleBook = response.data
                     this.bookSearched = true
                 }
 
