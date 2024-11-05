@@ -3,9 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Books</title>
 </head>
+
 <body>
-    
+    <h1>Book CRUD</h1>
+    <div id="app">
+
+        <!-- GET ALL-->
+        <div id="getAll" class="mt-3">
+            <h2>Get All (GET)</h2>
+            <button id="getAllButton" class="btn btn-primary" @click="getAllBooks">Get All Books</button>
+            <br>
+            <input v-model="titleSubstring" type="text" placeholder="title" v-on:keyup.enter="getByTitle">
+            <button @click="getByTitle" class="btn btn-primary">Get by title</button>
+        </div>
+
+        <!-- GET ALL OUTPUT -->
+        <div id="getAllOutput">
+            <ul id="booklist" v-if="books.length">
+                <li v-for="book in books">
+                    {{ book.id }} {{ book.title }} : {{ book.price }}
+                </li>
+            </ul>
+            <div v-else>No books</div>
+        </div>
+
+        <!-- GET BY ID-->
+        <div id="getById" class="mt-5">
+            <h2>Get By Id (GET)</h2>
+            <input v-model="idToGetBy" placeholder="id" type="number">
+            <button @click="getById(idToGetBy)" class="btn btn-primary">Get By Id</button>
+        </div>
+
+        <!-- GET BY ID OUTPUT -->
+        <div id="getByIdOutput">
+            <div v-if="!bookSearched">Please enter an id to search for.</div>
+            <div v-else-if="singleBook">
+                {{ singleBook.id }} {{ singleBook.title }} : {{ singleBook.price }}
+            </div>
+            <div v-else>No book with id: {{ idToGetBy }}</div>
+        </div>
+
+        <!-- POST -->
+        <div id="post" class="mt-5">
+            <h2>Create Book (POST)</h2>
+            <input v-model="addData.titel" placeholder="title" type="text">
+            <input v-model.number="addData.price" placeholder="price" type="number">
+            <button @click="addBook" class="btn btn-success">Add</button>
+        </div>
+
+        <!-- POST OUTPUT -->
+        <div id="postOutput">
+            {{ addMessage }}
+        </div>
+
+        <!-- UPDATE -->
+        <div id="update" class="mt-5">
+            <h2>Update (PUT)</h2>
+            <input v-model.number="updateData.id" placeholder="id" type="number">
+            <input v-model="updateData.titel" placeholder="title" type="text">
+            <input v-model.number="updateData.price" placeholder="price" type="number">
+            <button @click="updateBook" class="btn btn-success">Update</button>
+        </div>
+
+        <!-- UPDATE OUTPUT -->
+        <div id="updateOutput">
+            {{ updateMessage }}
+        </div>
+
+        <!-- DELETE-->
+        <div id="delete" class="mt-5">
+            <input v-model.number="idToDelete" placeholder="id" type="number">
+            <button @click="deleteBook(idToDelete)" class="btn btn-danger">Delete</button>
+        </div>
+
+        <!-- DELETE OUTPUT -->
+        <div id="deleteOutput">
+            {{ deleteMessage }}
+        </div>
+        
+    </div>
+
+    <script src="index.js"></script>
 </body>
+
 </html>
