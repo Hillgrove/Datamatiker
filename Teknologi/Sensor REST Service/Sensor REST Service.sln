@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor REST API", "Sensor REST Service\Sensor REST API.csproj", "{D32F1E10-5203-4D48-AFCF-348F0C667FE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorDataLib", "SensorDataLib\SensorDataLib.csproj", "{61E52A48-7B6C-4D43-B45F-C09958E9AC73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor REST API", "Sensor REST API\Sensor REST API.csproj", "{38691EA8-B5BB-4FD0-A952-C087E42080F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D32F1E10-5203-4D48-AFCF-348F0C667FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D32F1E10-5203-4D48-AFCF-348F0C667FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D32F1E10-5203-4D48-AFCF-348F0C667FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D32F1E10-5203-4D48-AFCF-348F0C667FE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61E52A48-7B6C-4D43-B45F-C09958E9AC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61E52A48-7B6C-4D43-B45F-C09958E9AC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61E52A48-7B6C-4D43-B45F-C09958E9AC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61E52A48-7B6C-4D43-B45F-C09958E9AC73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38691EA8-B5BB-4FD0-A952-C087E42080F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38691EA8-B5BB-4FD0-A952-C087E42080F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38691EA8-B5BB-4FD0-A952-C087E42080F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38691EA8-B5BB-4FD0-A952-C087E42080F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
