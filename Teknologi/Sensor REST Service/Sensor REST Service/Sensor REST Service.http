@@ -1,6 +1,6 @@
-@Sensor_REST_Service_HostAddress = http://localhost:5189
+@Sensor_REST_API_HostAddress = http://localhost:5189
 
-GET {{Sensor_REST_Service_HostAddress}}/weatherforecast/
+GET {{Sensor_REST_API_HostAddress}}/sensordata/
 Accept: application/json
 
 ###
