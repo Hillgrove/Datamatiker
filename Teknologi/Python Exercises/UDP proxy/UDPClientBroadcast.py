@@ -3,9 +3,9 @@ from socket import AF_INET, SO_BROADCAST, SOCK_DGRAM, SOL_SOCKET, socket
 from time import sleep
 
 SERVER_NAME = "255.255.255.255"
-SERVER_PORT = 12000
-clientSocket = socket(AF_INET, SOCK_DGRAM)
-clientSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+SERVER_PORT = 10100
+clientsocket = socket(AF_INET, SOCK_DGRAM)
+clientsocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
 
 MIN_SPEED = 20
 MAX_SPEED = 150
@@ -22,7 +22,4 @@ while True:
 
     sensor_data = f'{{"SensorName":"{random_town} speedtrap","Speed":{random_speed}}}'
     print(f"broadcasting: {sensor_data}")
-    clientSocket.sendto(sensor_data.encode(), (SERVER_NAME, SERVER_PORT))
-    # modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
-    # print((modifiedMessage.decode()))
-    # clientSocket.close()
+    clientsocket.sendto(sensor_data.encode("utf-8"), (SERVER_NAME, SERVER_PORT))
