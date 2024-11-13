@@ -1,3 +1,6 @@
+
+# Not used in this PROXY solution - but an example of a simple udp client
+
 from socket import AF_INET, SOCK_DGRAM, socket
 
 serverName = "localhost"
