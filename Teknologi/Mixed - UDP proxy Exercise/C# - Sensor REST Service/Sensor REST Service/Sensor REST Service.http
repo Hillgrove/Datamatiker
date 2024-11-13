@@ -1,6 +1,0 @@
-@Sensor_REST_API_HostAddress = http://localhost:5189
-
-GET {{Sensor_REST_API_HostAddress}}/sensordata/
-Accept: application/json
-
-###
