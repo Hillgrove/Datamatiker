@@ -78,7 +78,6 @@ namespace P2PLib
 
             // if filename does not exist in the dictionary
             return false;
-
         }
 
         //(Optional) Get all filenames, returns a list of strings as a JSON list/array.

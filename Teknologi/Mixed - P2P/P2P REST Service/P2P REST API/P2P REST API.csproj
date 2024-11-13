@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Reference Include="P2PLib">
+      <HintPath>..\P2PLib\bin\Debug\net8.0\P2PLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
