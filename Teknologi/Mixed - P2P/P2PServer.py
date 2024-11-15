@@ -5,18 +5,20 @@ import requests
 
 REST_SERVER_IP = "localhost"
 REST_SERVER_PORT = 5123
+FILE_API_ROUTE = "api/FileEndPoints"
 
-SERVER_PEER_IP = "127.0.0.1"
+SERVER_PEER_IP = "localhost"
 SERVER_PEER_PORT = 6000
 
-MAX_CONNECTIONS = 5
+MAX_QUEUE_SIZE = 5
 BUFFER_SIZE = 4096
 
 filenames = ["file1.txt", "file2.txt", "file3.txt"]
 
 
+# Register files with REST server
 def register_file(filename, file_endpoint):
-    url = f"http://{REST_SERVER_IP}:{REST_SERVER_PORT}/api/FileEndPoints/{filename}"
+    url = f"http://{REST_SERVER_IP}:{REST_SERVER_PORT}/{FILE_API_ROUTE}/{filename}"
 
     try:
         response = requests.post(url, json=file_endpoint)
@@ -31,12 +33,14 @@ def register_file(filename, file_endpoint):
         print(f"Error connecting to REST server: {e}")
 
 
+# Handle a single client
 def handle_client(client_socket, addr):
     try:
         # Receive the request from the client
         request_line = client_socket.recv(BUFFER_SIZE).decode().strip()
         print(f"[{addr}] Received request: {request_line}")
 
+        # parse request line for method and filename
         if request_line.startswith("GET "):
             filename = request_line[4:].strip()
 
@@ -60,10 +64,11 @@ def handle_client(client_socket, addr):
         client_socket.close()
 
 
+# Boot up server to work concurrently
 def start_server():
     server = socket(AF_INET, SOCK_STREAM)
-    server.bind((SERVER_PEER_IP, SERVER_PEER_PORT))
-    server.listen(MAX_CONNECTIONS)
+    server.bind(("SERVER_PEER_IP", SERVER_PEER_PORT))
+    server.listen(MAX_QUEUE_SIZE)
     print(f"Server is listening on {SERVER_PEER_IP}:{SERVER_PEER_PORT}")
     try:
         while True:
@@ -74,20 +79,23 @@ def start_server():
             )
             client_thread.start()
     except KeyboardInterrupt:
-        print("Server is shutting down.")
+        print("\nKeyboardInterrupt detected. Server is shutting down.")
     finally:
         server.close()
 
 
 def main():
-    file_endpoint = {"IPAddress": SERVER_PEER_IP, "Port": SERVER_PEER_PORT}
+    try:
+        file_endpoint = {"IPAddress": SERVER_PEER_IP, "Port": SERVER_PEER_PORT}
 
-    # Register each file with the centralized REST server
-    for filename in filenames:
-        register_file(filename, file_endpoint)
+        # Register each file with the centralized REST server
+        for filename in filenames:
+            register_file(filename, file_endpoint)
 
-    # Start the server to listen for incoming client connections
-    start_server()
+        # Start the server to listen for incoming client connections
+        start_server()
+    except KeyboardInterrupt:
+        print("\nKeyboardInterrupt detected in main. Exiting gracefully.")
 
 
 if __name__ == "__main__":
