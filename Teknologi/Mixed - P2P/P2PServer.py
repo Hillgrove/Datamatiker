@@ -16,8 +16,8 @@ BUFFER_SIZE = 4096
 filenames = ["file1.txt", "file2.txt", "file3.txt"]
 
 
-# Register files with REST server
 def register_file(filename, file_endpoint):
+    """Register the filenames with REST server."""
     url = f"http://{REST_SERVER_IP}:{REST_SERVER_PORT}/{FILE_API_ROUTE}/{filename}"
 
     try:
@@ -33,8 +33,8 @@ def register_file(filename, file_endpoint):
         print(f"Error connecting to REST server: {e}")
 
 
-# Handle a single client
 def handle_client(client_socket, addr):
+    """Handle a client connection."""
     try:
         # Receive the request from the client
         request_line = client_socket.recv(BUFFER_SIZE).decode().strip()
@@ -52,6 +52,7 @@ def handle_client(client_socket, addr):
                 error_msg = f'File "{filename}" is not shared by this server.'
                 client_socket.sendall(error_msg.encode())
                 print(f"[{addr}] {error_msg}")
+
         else:
             error_msg = 'Invalid request format. Expected "GET <filename>".'
             client_socket.sendall(error_msg.encode())
@@ -64,10 +65,10 @@ def handle_client(client_socket, addr):
         client_socket.close()
 
 
-# Boot up server to work concurrently
 def start_server():
+    """Start the server to listen for incoming client connections and handle them concurrently."""
     server = socket(AF_INET, SOCK_STREAM)
-    server.bind(("SERVER_PEER_IP", SERVER_PEER_PORT))
+    server.bind((SERVER_PEER_IP, SERVER_PEER_PORT))
     server.listen(MAX_QUEUE_SIZE)
     print(f"Server is listening on {SERVER_PEER_IP}:{SERVER_PEER_PORT}")
     try:
