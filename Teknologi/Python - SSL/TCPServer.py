@@ -18,33 +18,33 @@ context.load_cert_chain(
     password=PRIVATE_KEY_PASSWORD,
 )
 
-serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(("", SERVER_PORT))
-serverSocket.listen(1)
-secureSocket = context.wrap_socket(serverSocket, server_side=True)
+server_socket = socket(AF_INET, SOCK_STREAM)
+server_socket.bind(("", SERVER_PORT))
+server_socket.listen(1)
+secure_socket = context.wrap_socket(server_socket, server_side=True)
 
 print("Server is ready to listen")
 
 
-def handleClient(connectionSocket, address):
-    connectionOpen = True
-    while connectionOpen:
-        sentence = connectionSocket.recv(BUFFER_SIZE).decode()
+def handle_client(connection_socket, address):
+    connection_open = True
+    while connection_open:
+        sentence = connection_socket.recv(BUFFER_SIZE).decode()
 
         if sentence == "exit\r\n":
-            connectionSocket.send(CLOSING_MESSAGE.encode())
-            connectionSocket.close()
-            connectionOpen = False
+            connection_socket.send(CLOSING_MESSAGE.encode())
+            connection_socket.close()
+            connection_open = False
             break
 
         print(sentence)
-        capitalizedSentence = sentence.upper()
-        connectionSocket.send(capitalizedSentence.encode())
+        capitalized_sentence = sentence.upper()
+        connection_socket.send(capitalized_sentence.encode())
 
 
 while True:
-    connectionSocket, addr = secureSocket.accept()
+    connection_socket, addr = secure_socket.accept()
     threading.Thread(
-        target=handleClient, args=(connectionSocket, addr)
+        target=handle_client, args=(connection_socket, addr)
     ).start()  # Concurrency - more threads / connection
-    # handleClient(connectionSocket, addr) # Sequential - 1 thread / connection
+    # handle_client(connection_socket, addr) # Sequential - 1 thread / connection
