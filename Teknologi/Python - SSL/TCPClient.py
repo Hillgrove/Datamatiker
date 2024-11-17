@@ -1,6 +1,5 @@
-from socket import socket, AF_INET, SOCK_STREAM
 import ssl
-
+from socket import AF_INET, SOCK_STREAM, socket
 
 SERVER_NAME = "localhost"
 SERVER_PORT = 12000
