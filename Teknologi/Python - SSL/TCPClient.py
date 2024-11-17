@@ -1,20 +1,26 @@
 from socket import socket, AF_INET, SOCK_STREAM
+import ssl
+
 
 SERVER_NAME = "localhost"
 SERVER_PORT = 12000
 CLOSING_MESSAGE = "Closing connection."
 
-clientSocket = socket(AF_INET, SOCK_STREAM)
-clientSocket.connect((SERVER_NAME, SERVER_PORT))
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+
+client_socket = socket(AF_INET, SOCK_STREAM)
+client_socket.connect((SERVER_NAME, SERVER_PORT))
+
+secure_socket = context.wrap_socket(client_socket)
 
 while True:
     sentence = input("Input sentence: ")
 
     if sentence == "exit":
         print(CLOSING_MESSAGE)
-        clientSocket.close()
+        secure_socket.close()
         break
 
-    clientSocket.send(sentence.encode())
-    modifiedSentence = clientSocket.recv(1024)
-    print("From server: ", modifiedSentence.decode())
+    secure_socket.send(sentence.encode())
+    modified_sentence = secure_socket.recv(1024)
+    print("From server: ", modified_sentence.decode())
