@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoClient", "EchoClient\EchoClient.csproj", "{0050D271-DB51-407B-8C73-7EC0FF99DF17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerFramework", "ServerFramework\ServerFramework.csproj", "{EF3D5A01-FD69-4192-8265-AC122B8E4E27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServerImplementation", "TCPServerImplementation\TCPServerImplementation.csproj", "{68F0E781-7DFA-46FF-832E-25D88B9F807E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0050D271-DB51-407B-8C73-7EC0FF99DF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0050D271-DB51-407B-8C73-7EC0FF99DF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0050D271-DB51-407B-8C73-7EC0FF99DF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0050D271-DB51-407B-8C73-7EC0FF99DF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3D5A01-FD69-4192-8265-AC122B8E4E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3D5A01-FD69-4192-8265-AC122B8E4E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3D5A01-FD69-4192-8265-AC122B8E4E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3D5A01-FD69-4192-8265-AC122B8E4E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F0E781-7DFA-46FF-832E-25D88B9F807E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F0E781-7DFA-46FF-832E-25D88B9F807E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F0E781-7DFA-46FF-832E-25D88B9F807E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F0E781-7DFA-46FF-832E-25D88B9F807E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import Vue JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Collect Words</title>
+
+    <style>
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- user interface -->
+    <h1>Collect Words</h1>
+    <div id="app">
+        <input v-model="word" id="wordInput" type="text" placeholder="Type a word">
+        <button @click="Save(word)" id="saveButton">Save</button>
+        <button @click="Show" id="showButton">Show</button>
+        <button @click="Clear" id="clearButton">Clear</button>
+
+        <div id="output">
+            <p v-if="message === 'empty' || message === null">
+                {{ message }}
+            </p>
+            <table v-else>
+                <thead>
+                    <tr>
+                        <th>Words saved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="word in message">
+                        <td>{{ word }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- import script -->
+    <script src="index.js"></script>
+</body>
+</html>

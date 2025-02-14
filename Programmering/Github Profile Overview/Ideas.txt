@@ -1,0 +1,9 @@
+- Add github profile (as a button) for easy switching
+- remove github profile (x on button?)
+- filtering options: newest repo, newest commit, size?
+- data to see: created data, updated date, how long inactive (delta dates), number of commits, technologies
+- update repos vs GET each time
+
+
+Brainstorming
+- harmionca view?
