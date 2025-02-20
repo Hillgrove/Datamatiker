@@ -1,0 +1,646 @@
+├── Adv. Database/
+├── Adv. SW Construction/
+│   └── FrameworkTCPServer/
+│       ├── EchoClient/
+│       ├── ServerFramework/
+│       │   ├── TCPServer/
+│       │   └── doxygen/
+│       │       └── html/
+│       │           └── search/
+│       └── TCPServerImplementation/
+├── Programmering/
+│   ├── ActorRepositoryLib/
+│   │   ├── ActorRepositoryLib/
+│   │   └── ActorRepositoryLibTests/
+│   ├── CalculatorApp/
+│   │   └── CalculatorApp/
+│   ├── CollectWords/
+│   ├── Github Profile Overview/
+│   ├── LinesLib/
+│   │   ├── LinesLib/
+│   │   │   └── Properties/
+│   │   └── LinesLibTests/
+│   │       └── Properties/
+│   ├── RepositoryUsingEFinMVC/
+│   │   └── RepositoryUsingEFinMVC/
+│   │       ├── .config/
+│   │       ├── App_Data/
+│   │       ├── App_Start/
+│   │       ├── Content/
+│   │       ├── Controllers/
+│   │       ├── DAL/
+│   │       ├── Models/
+│   │       ├── Properties/
+│   │       │   └── PublishProfiles/
+│   │       ├── Repository/
+│   │       ├── Scripts/
+│   │       └── Views/
+│   │           ├── Employee/
+│   │           ├── Home/
+│   │           └── Shared/
+│   ├── SchoolLibValidatorUnitTest/
+│   │   ├── SchoolLibValidatorUnitTest/
+│   │   └── SchoolLibValidatorUnitTestTests/
+│   ├── SeleniumTest/
+│   │   └── SeleniumTest/
+│   ├── SharedCalculator/
+│   │   ├── SharedCalculator/
+│   │   └── SharedCalculatorTests/
+│   ├── Test/
+│   ├── Todos/
+│   ├── VUE-Calculator/
+│   └── jsBooksVue/
+├── Software Construction/
+│   ├── Semester 1/
+│   │   ├── OOProg01/
+│   │   │   ├── BankV05/
+│   │   │   ├── ClockV10/
+│   │   │   ├── DiceGame/
+│   │   │   ├── MovieManagerV10/
+│   │   │   ├── RolePlayV10/
+│   │   │   ├── RolePlayV11/
+│   │   │   ├── RolePlayV12/
+│   │   │   ├── StaticExample/
+│   │   │   └── StockPortfolio/
+│   │   ├── OOProg02/
+│   │   │   ├── CarDealershipV05/
+│   │   │   ├── EmployeesV10/
+│   │   │   ├── FilteringV10/
+│   │   │   ├── PersonWithExceptions/
+│   │   │   ├── RolePlayV23/
+│   │   │   ├── SimpleGeometry/
+│   │   │   ├── WeaponShopV10/
+│   │   │   └── WeaponShopV20/
+│   │   ├── Prog01/
+│   │   │   ├── FunctionExample/
+│   │   │   ├── MovieManagerV05/
+│   │   │   ├── WebShopV05/
+│   │   │   └── WebShopV06/
+│   │   ├── Prog02/
+│   │   │   ├── BankV10/
+│   │   │   ├── CalculationSimulation/
+│   │   │   ├── CorrectChangeAutomat/
+│   │   │   ├── DrawShapes/
+│   │   │   ├── Flinter/
+│   │   │   ├── LibraryV10/
+│   │   │   │   ├── LibraryV10/
+│   │   │   │   └── LibraryV10Tests/
+│   │   │   ├── LibraryV11/
+│   │   │   │   ├── LibraryV11/
+│   │   │   │   └── LibraryV11Tests/
+│   │   │   ├── ListBaseCamp/
+│   │   │   ├── RolePlayV20/
+│   │   │   ├── RolePlayV21/
+│   │   │   ├── SchoolAdministrationV10/
+│   │   │   │   ├── SchoolAdministrationV10/
+│   │   │   │   └── SchoolAdministrationV10Tests/
+│   │   │   ├── WTF/
+│   │   │   ├── WeatherStationV10/
+│   │   │   ├── WebShopV10/
+│   │   │   │   ├── WebShopV10/
+│   │   │   │   └── WebShopV10Tests/
+│   │   │   └── WhileLoopsBaseCamp/
+│   │   ├── RazorPages/
+│   │   │   ├── ItemRazorV1/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV2/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV3/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV4/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV5/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV6/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── Data/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV7/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Customer/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── Data/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   ├── ItemRazorV8/
+│   │   │   │   ├── MockData/
+│   │   │   │   ├── Models/
+│   │   │   │   ├── Pages/
+│   │   │   │   │   ├── Customer/
+│   │   │   │   │   ├── Item/
+│   │   │   │   │   ├── Order/
+│   │   │   │   │   └── Shared/
+│   │   │   │   ├── Properties/
+│   │   │   │   ├── Service/
+│   │   │   │   └── wwwroot/
+│   │   │   │       ├── Data/
+│   │   │   │       ├── css/
+│   │   │   │       ├── js/
+│   │   │   │       └── lib/
+│   │   │   │           ├── bootstrap/
+│   │   │   │           ├── jquery/
+│   │   │   │           ├── jquery-validation/
+│   │   │   │           └── jquery-validation-unobtrusive/
+│   │   │   └── ItemRazorV9/
+│   │   │       ├── MockData/
+│   │   │       ├── Models/
+│   │   │       ├── Pages/
+│   │   │       │   ├── Customer/
+│   │   │       │   ├── Item/
+│   │   │       │   ├── Order/
+│   │   │       │   └── Shared/
+│   │   │       ├── Properties/
+│   │   │       ├── Service/
+│   │   │       │   ├── Legacy/
+│   │   │       │   └── Repositories/
+│   │   │       │       ├── Base/
+│   │   │       │       ├── Interfaces/
+│   │   │       │       └── Model/
+│   │   │       └── wwwroot/
+│   │   │           ├── Data/
+│   │   │           ├── css/
+│   │   │           ├── js/
+│   │   │           └── lib/
+│   │   │               ├── bootstrap/
+│   │   │               ├── jquery/
+│   │   │               ├── jquery-validation/
+│   │   │               └── jquery-validation-unobtrusive/
+│   │   └── Repetition/
+│   └── Semester 2/
+│       ├── ADONet/
+│       │   ├── ADOBarDBv0/
+│       │   ├── ADOBarDBv1/
+│       │   └── ADOBarDBv2/
+│       │       ├── DBMethods/
+│       │       └── Models/
+│       ├── Crafting/
+│       │   ├── Crafting Code/
+│       │   └── UnitTestProject/
+│       ├── EFCore/
+│       │   ├── EFCBarDBv0/
+│       │   ├── EFCBarDBv1/
+│       │   ├── EFCBarDBv2/
+│       │   │   ├── ModelsCustom/
+│       │   │   └── ModelsGenerated/
+│       │   ├── EFCBarDBv3/
+│       │   │   ├── ModelsCustom/
+│       │   │   ├── ModelsGenerated/
+│       │   │   └── Services/
+│       │   │       ├── EFCore/
+│       │   │       └── Interfaces/
+│       │   └── EFCBarDBv4/
+│       │       ├── ModelsCustom/
+│       │       ├── ModelsGenerated/
+│       │       └── Services/
+│       │           ├── EFCore/
+│       │           └── Interfaces/
+│       ├── Hands On/
+│       │   └── ADO - Hands On/
+│       ├── HowTo/
+│       │   ├── Collection/
+│       │   │   ├── 06/
+│       │   │   ├── 07/
+│       │   │   ├── 08/
+│       │   │   └── 09/
+│       │   ├── Generics/
+│       │   │   ├── 01/
+│       │   │   ├── 02/
+│       │   │   ├── 03/
+│       │   │   ├── 04/
+│       │   │   ├── 05/
+│       │   │   └── 06/
+│       │   ├── Inheritance/
+│       │   │   ├── 01/
+│       │   │   ├── 02/
+│       │   │   ├── 03/
+│       │   │   ├── 04/
+│       │   │   └── 05/
+│       │   ├── Person/
+│       │   │   ├── 01/
+│       │   │   ├── 02/
+│       │   │   ├── 03/
+│       │   │   ├── 04/
+│       │   │   ├── 05/
+│       │   │   ├── 06/
+│       │   │   ├── 07/
+│       │   │   ├── 08/
+│       │   │   ├── 09/
+│       │   │   ├── 10/
+│       │   │   └── 11/
+│       │   ├── Player/
+│       │   │   ├── 01/
+│       │   │   ├── 02/
+│       │   │   ├── 03/
+│       │   │   ├── 04/
+│       │   │   ├── 05/
+│       │   │   ├── 06/
+│       │   │   ├── 07/
+│       │   │   ├── 08/
+│       │   │   ├── 09/
+│       │   │   ├── 10/
+│       │   │   └── 11/
+│       │   └── Utilities/
+│       ├── NaiveRPG/
+│       │   ├── Characters/
+│       │   └── Items/
+│       ├── OOProg02/
+│       │   ├── BankWithExceptions/
+│       │   ├── ClockV20/
+│       │   ├── GenericRepository/
+│       │   ├── GenericsDogsAndCircles/
+│       │   ├── GenericsVariance/
+│       │   │   ├── Animals/
+│       │   │   └── Collections/
+│       │   ├── LambdaAnimals/
+│       │   └── StockTrade/
+│       ├── OOProg03/
+│       │   ├── AnimalBehavior/
+│       │   │   └── Interfaces/
+│       │   ├── CalculationProxy/
+│       │   │   ├── ActualCalc/
+│       │   │   ├── CalcByProxy/
+│       │   │   └── Common/
+│       │   ├── CompositeShapes/
+│       │   │   ├── Interfaces/
+│       │   │   └── Shapes/
+│       │   ├── DataAccess/
+│       │   │   ├── DBToolClasses/
+│       │   │   ├── DataSource/
+│       │   │   └── DomainClasses/
+│       │   ├── EnvironmentGenerator/
+│       │   │   ├── Environment/
+│       │   │   ├── ImplFuture/
+│       │   │   ├── ImplMedieval/
+│       │   │   └── Interfaces/
+│       │   ├── Fight1v1/
+│       │   │   ├── FightManagers/
+│       │   │   └── Interfaces/
+│       │   ├── NPCAnimationManager/
+│       │   │   ├── Common/
+│       │   │   │   ├── Animation/
+│       │   │   │   ├── Helpers/
+│       │   │   │   ├── Interfaces/
+│       │   │   │   └── Types/
+│       │   │   └── Original/
+│       │   ├── SupportManagement/
+│       │   │   ├── Error/
+│       │   │   ├── SupportCoR/
+│       │   │   │   ├── Adapters/
+│       │   │   │   ├── Config/
+│       │   │   │   └── SupportHandler/
+│       │   │   ├── SupportCommon/
+│       │   │   └── SupportOriginal/
+│       │   └── WeaponFactory/
+│       │       ├── Factories/
+│       │       ├── Interfaces/
+│       │       └── Weapons/
+│       ├── Prog03/
+│       │   ├── BackPacking/
+│       │   │   ├── Algorithms/
+│       │   │   ├── Containers/
+│       │   │   └── Item/
+│       │   ├── BoundingRectangle/
+│       │   ├── DataStructureCompare/
+│       │   ├── FateV10/
+│       │   │   ├── GameClasses/
+│       │   │   └── GearClasses/
+│       │   ├── InvoiceGenerator/
+│       │   │   ├── DomainModel/
+│       │   │   └── Printing/
+│       │   ├── LINQCocktails/
+│       │   ├── LINQDrink/
+│       │   ├── LINQHotels/
+│       │   ├── ModernFamily/
+│       │   ├── Palindrome/
+│       │   ├── PrimesSieve/
+│       │   ├── SchoolAdministrationV15/
+│       │   └── TicketsToBoardingPasses/
+│       ├── Prog04/
+│       │   ├── CrossTalk/
+│       │   ├── NumericalPi/
+│       │   └── ProducerConsumer/
+│       ├── RazorPages/
+│       │   ├── WebShopRPV0/
+│       │   │   ├── Models/
+│       │   │   ├── Pages/
+│       │   │   │   ├── Products/
+│       │   │   │   └── Shared/
+│       │   │   ├── Properties/
+│       │   │   ├── Services/
+│       │   │   └── wwwroot/
+│       │   │       ├── css/
+│       │   │       ├── js/
+│       │   │       └── lib/
+│       │   │           ├── bootstrap/
+│       │   │           ├── jquery/
+│       │   │           ├── jquery-validation/
+│       │   │           └── jquery-validation-unobtrusive/
+│       │   ├── WebShopRPV1/
+│       │   │   ├── Models/
+│       │   │   │   ├── Extended/
+│       │   │   │   ├── Generated/
+│       │   │   │   ├── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   ├── Pages/
+│       │   │   │   ├── Base/
+│       │   │   │   ├── Customers/
+│       │   │   │   ├── Products/
+│       │   │   │   └── Shared/
+│       │   │   ├── Properties/
+│       │   │   ├── Services/
+│       │   │   │   ├── Data/
+│       │   │   │   │   ├── Base/
+│       │   │   │   │   └── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   │       ├── Base/
+│       │   │   │       └── Interfaces/
+│       │   │   └── wwwroot/
+│       │   │       ├── css/
+│       │   │       ├── js/
+│       │   │       └── lib/
+│       │   │           ├── bootstrap/
+│       │   │           ├── jquery/
+│       │   │           ├── jquery-validation/
+│       │   │           └── jquery-validation-unobtrusive/
+│       │   ├── WebShopRPV2/
+│       │   │   ├── Models/
+│       │   │   │   ├── Extended/
+│       │   │   │   ├── Generated/
+│       │   │   │   ├── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   ├── Pages/
+│       │   │   │   ├── Base/
+│       │   │   │   ├── Customers/
+│       │   │   │   ├── Products/
+│       │   │   │   └── Shared/
+│       │   │   ├── Properties/
+│       │   │   ├── Services/
+│       │   │   │   ├── Data/
+│       │   │   │   │   ├── Base/
+│       │   │   │   │   └── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   │       ├── Base/
+│       │   │   │       └── Interfaces/
+│       │   │   └── wwwroot/
+│       │   │       ├── css/
+│       │   │       ├── js/
+│       │   │       └── lib/
+│       │   │           ├── bootstrap/
+│       │   │           ├── jquery/
+│       │   │           ├── jquery-validation/
+│       │   │           └── jquery-validation-unobtrusive/
+│       │   ├── WebShopRPV3/
+│       │   │   ├── Models/
+│       │   │   │   ├── Extended/
+│       │   │   │   ├── Generated/
+│       │   │   │   ├── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   ├── Pages/
+│       │   │   │   ├── Base/
+│       │   │   │   ├── Customers/
+│       │   │   │   ├── Orders/
+│       │   │   │   ├── Products/
+│       │   │   │   └── Shared/
+│       │   │   ├── Properties/
+│       │   │   ├── Services/
+│       │   │   │   ├── Data/
+│       │   │   │   │   ├── Base/
+│       │   │   │   │   └── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   │       ├── Base/
+│       │   │   │       └── Interfaces/
+│       │   │   └── wwwroot/
+│       │   │       ├── css/
+│       │   │       ├── js/
+│       │   │       └── lib/
+│       │   │           ├── bootstrap/
+│       │   │           ├── jquery/
+│       │   │           ├── jquery-validation/
+│       │   │           └── jquery-validation-unobtrusive/
+│       │   ├── WebShopRPV4/
+│       │   │   ├── Models/
+│       │   │   │   ├── Extended/
+│       │   │   │   ├── Generated/
+│       │   │   │   ├── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   ├── Pages/
+│       │   │   │   ├── Base/
+│       │   │   │   ├── Customers/
+│       │   │   │   ├── Orders/
+│       │   │   │   ├── Products/
+│       │   │   │   └── Shared/
+│       │   │   ├── Properties/
+│       │   │   ├── Services/
+│       │   │   │   ├── Data/
+│       │   │   │   │   ├── Base/
+│       │   │   │   │   └── Interfaces/
+│       │   │   │   └── Stat/
+│       │   │   │       ├── Base/
+│       │   │   │       └── Interfaces/
+│       │   │   └── wwwroot/
+│       │   │       ├── css/
+│       │   │       ├── js/
+│       │   │       └── lib/
+│       │   │           ├── bootstrap/
+│       │   │           ├── jquery/
+│       │   │           ├── jquery-validation/
+│       │   │           └── jquery-validation-unobtrusive/
+│       │   └── WebShopRPV5/
+│       │       ├── Models/
+│       │       │   ├── Extended/
+│       │       │   ├── Generated/
+│       │       │   ├── Interfaces/
+│       │       │   └── Stat/
+│       │       ├── Pages/
+│       │       │   ├── Base/
+│       │       │   ├── Customers/
+│       │       │   ├── LogIn/
+│       │       │   ├── Orders/
+│       │       │   ├── Products/
+│       │       │   └── Shared/
+│       │       ├── Properties/
+│       │       ├── Services/
+│       │       │   ├── Data/
+│       │       │   │   ├── Base/
+│       │       │   │   └── Interfaces/
+│       │       │   └── Stat/
+│       │       │       ├── Base/
+│       │       │       └── Interfaces/
+│       │       └── wwwroot/
+│       │           ├── css/
+│       │           ├── js/
+│       │           └── lib/
+│       │               ├── bootstrap/
+│       │               ├── jquery/
+│       │               ├── jquery-validation/
+│       │               └── jquery-validation-unobtrusive/
+│       ├── UnitTest/
+│       │   ├── TestExampleA/
+│       │   │   ├── TestExampleA/
+│       │   │   └── UnitTestProject/
+│       │   ├── TestExampleB/
+│       │   │   ├── TestExampleB/
+│       │   │   └── UnitTestProject/
+│       │   └── TestExampleC/
+│       │       ├── TestExampleC/
+│       │       └── UnitTestProject/
+│       └── WareHouse/
+├── Software Design/
+│   └── Semester 2/
+│       ├── ContosoSite/
+│       │   └── App_Data/
+│       └── ContosoUniversityData/
+│           └── Properties/
+└── Teknologi/
+    ├── C# - JSON (Serialize and Deserialize)/
+    │   ├── Models/
+    │   └── Solutions/
+    ├── C# - Protocol/
+    │   └── Protocol/
+    ├── C# - REST Exercises (API, CORS, Status Codes, Filtering etc)/
+    │   ├── REST Exercise 1/
+    │   │   ├── Controllers/
+    │   │   └── Properties/
+    │   ├── REST Exercise 2/
+    │   │   ├── Controllers/
+    │   │   └── Properties/
+    │   ├── REST Exercise 3/
+    │   │   ├── Controllers/
+    │   │   └── Properties/
+    │   │       ├── PublishProfiles/
+    │   │       └── ServiceDependencies/
+    │   │           └── Hill-PokemonAPI - Web Deploy/
+    │   ├── REST Exercise 4/
+    │   │   ├── Controllers/
+    │   │   └── Properties/
+    │   │       ├── PublishProfiles/
+    │   │       └── ServiceDependencies/
+    │   │           └── Hill-PokemonAPI - Web Deploy/
+    │   ├── REST Exercise 5/
+    │   │   ├── Controllers/
+    │   │   └── Properties/
+    │   │       ├── PublishProfiles/
+    │   │       └── ServiceDependencies/
+    │   │           └── Hill-PokemonAPI - Web Deploy/
+    │   └── REST Exercise 7/
+    ├── C# - TCP Exercises (Echo Servers)/
+    │   ├── EchoServer v1/
+    │   └── EchoServer v2/
+    ├── C# - UDP Exercise (Server and Client/
+    │   ├── UDP Client/
+    │   │   └── UDP Client/
+    │   └── UDP Server/
+    │       └── UDP Server/
+    ├── Mixed - P2P/
+    │   └── P2P REST Service/
+    │       ├── P2P REST API/
+    │       │   ├── Controllers/
+    │       │   └── Properties/
+    │       └── P2PLib/
+    │           └── Models/
+    ├── Mixed - UDP proxy Exercise/
+    │   ├── C# - Sensor REST Service/
+    │   │   ├── Sensor REST API/
+    │   │   │   ├── Controllers/
+    │   │   │   └── Properties/
+    │   │   └── SensorDataLib/
+    │   └── Python - Broadcaster, Server, Client/
+    ├── Python - Consume REST/
+    ├── Python - JSON  (Serialize and Deserialize)/
+    ├── Python - Port Scanner/
+    ├── Python - SSL/
+    └── Python - TCP Server and Client/
+        ├── 1. Echo server and client/
+        └── 2. More advanced TCP communication/
