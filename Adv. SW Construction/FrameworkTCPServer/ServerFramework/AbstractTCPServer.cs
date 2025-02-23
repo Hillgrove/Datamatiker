@@ -9,12 +9,18 @@ namespace ServerFramework
         private readonly int _port;
         private readonly string _serverName;
         private volatile bool _running = true;
+        private readonly string _confFile = "MyConf.xml";
 
         protected AbstractTCPServer()
         {
-            XmlDocument configDoc = new XmlDocument();
+            var path = Environment.GetEnvironmentVariable("AbstractServerConf");
+            if (path == null)
+            {
+                throw new ArgumentException("Invalid directory: path not found");
+            }
 
-            configDoc.Load("MyConf.xml");
+            XmlDocument configDoc = new XmlDocument();
+            configDoc.Load(Path.Combine(path, _confFile));
 
             XmlElement root = configDoc.DocumentElement ?? throw new InvalidOperationException("Invalid configuration file: Missing root element.");
 
