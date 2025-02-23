@@ -4,10 +4,6 @@ namespace TCPServerImplementation
 {
     public class MyTCPServer : AbstractTCPServer
     {
-        public MyTCPServer(int port, string serverName) : base(port, serverName)
-        {
-        }
-
         protected override void TcpServerWork(StreamReader sr, StreamWriter sw)
         {
             string? line = sr.ReadLine();

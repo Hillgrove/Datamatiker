@@ -1,5 +1,6 @@
 ﻿using System.Net.Sockets;
 using System.Net;
+using System.Xml;
 
 namespace ServerFramework
 {
@@ -7,12 +8,20 @@ namespace ServerFramework
     {
         private readonly int _port;
         private readonly string _serverName;
-        private volatile bool running = true;
+        private volatile bool _running = true;
 
-        protected AbstractTCPServer(int port, string serverName)
+        protected AbstractTCPServer()
         {
-            _port = port;
-            _serverName = serverName;
+            XmlDocument configDoc = new XmlDocument();
+
+            configDoc.Load("MyConf.xml");
+
+            XmlElement root = configDoc.DocumentElement ?? throw new InvalidOperationException("Invalid configuration file: Missing root element.");
+
+            _serverName = root.SelectSingleNode("ServerName")?.InnerText.Trim() ?? throw new InvalidOperationException("ServerName not found in configuration.");
+            _port = int.TryParse(root.SelectSingleNode("ServerPort")?.InnerText.Trim(), out int port) 
+                ? port 
+                : throw new InvalidOperationException("Invalid or missing ServerPort in configuration.");
         }
 
         /// <summary>
@@ -27,7 +36,7 @@ namespace ServerFramework
 
             Task.Run(() => StopServer());
 
-            while (running)
+            while (_running)
             {
                 if (listener.Pending())
                 {
@@ -59,7 +68,7 @@ namespace ServerFramework
 
         private void SetRunningToFalse()
         {
-            running = false;
+            _running = false;
         }
 
         private void StopServer()
