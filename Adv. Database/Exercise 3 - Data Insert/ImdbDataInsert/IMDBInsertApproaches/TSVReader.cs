@@ -39,7 +39,7 @@ namespace IMDBInsertApproaches
         {
             if (!titleTypes.ContainsKey(fields[1]))
             {
-                titleTypes[fields[1]] = titleTypes.Count;
+                titleTypes[fields[1]] = titleTypes.Count + 1; // Add one as MSSQL is 1-based indexing)
             }
         }
 
@@ -68,7 +68,7 @@ namespace IMDBInsertApproaches
                 int genreID;
                 if (!genres.ContainsKey(genre))
                 {
-                    genreID = genres.Count;
+                    genreID = genres.Count + 1; // Add one as MSSQL is 1-based indexing)
                     genres[genre] = genreID;
                 }
                 else
