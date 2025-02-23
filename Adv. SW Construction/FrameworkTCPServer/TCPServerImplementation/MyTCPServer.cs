@@ -1,4 +1,4 @@
-﻿using ServerFramework.TCPServer;
+﻿using ServerFramework;
 
 namespace TCPServerImplementation
 {

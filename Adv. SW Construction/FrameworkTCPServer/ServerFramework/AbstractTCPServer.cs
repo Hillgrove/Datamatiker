@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 
-namespace ServerFramework.TCPServer
+namespace ServerFramework
 {
     public abstract class AbstractTCPServer
     {
@@ -38,7 +38,7 @@ namespace ServerFramework.TCPServer
 
                 else
                 {
-                    Thread.Sleep(2*1000);
+                    Thread.Sleep(2 * 1000);
                 }
             }
 
@@ -66,7 +66,7 @@ namespace ServerFramework.TCPServer
         {
             TcpListener stopListener = new TcpListener(IPAddress.Loopback, _port + 1);
             stopListener.Start();
-            
+
             while (true)
             {
 
