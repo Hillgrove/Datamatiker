@@ -5,72 +5,72 @@ namespace ServerFramework
     public sealed class Logger
     {
         private static readonly Logger _instance = new();
-        private readonly TraceSource _traceSource;
-        private readonly SourceSwitch _sourceSwitch;
-        private static readonly string _logPath = "../../../../server.log";
+        private TraceSource _traceSource;
+        private SourceSwitch _sourceSwitch;
 
         private Logger()
         {
-            _sourceSwitch = new SourceSwitch("LoggerSourceSwitch", "Information");
-            _traceSource = new TraceSource("Logger", SourceLevels.All)
+            _sourceSwitch = new SourceSwitch("DefaultSwitch", "All");
+            _traceSource = new TraceSource("DefaultLogger", SourceLevels.All)
             {
                 Switch = _sourceSwitch
             };
 
+#if DEBUG
             _traceSource.Listeners.Add(new ConsoleTraceListener
             {
                 Filter = new EventTypeFilter(SourceLevels.Information)
             });
-
-            _traceSource.Listeners.Add(new TextWriterTraceListener(_logPath)
-            {
-                Filter = new EventTypeFilter(SourceLevels.Warning)
-            });
-
-            if (OperatingSystem.IsWindows() && !EventLog.SourceExists("AbstractTCPServer"))
-            {
-                try
-                {
-                    EventLog.CreateEventSource("AbstractTCPServer", "Application");
-                }
-
-                catch (Exception ex)
-                {
-                    LogError($"Error creating event log source: {ex.Message}");
-                }
-            }
-
-            if (OperatingSystem.IsWindows())
-            {
-                _traceSource.Listeners.Add(new EventLogTraceListener("AbstractTCPServer")
-                {
-                    Filter = new EventTypeFilter(SourceLevels.Error)
-                });
-            }
+#endif
         }
 
         public static Logger Instance => _instance;
+
+        public void Configure(string sourceName, string switchName, SourceLevels level)
+        {
+            _sourceSwitch = new SourceSwitch(switchName, level.ToString());
+            _traceSource = new TraceSource(sourceName, level);
+            _traceSource.Switch = _sourceSwitch;
+        }
 
         public void SetLoglevel(SourceLevels level)
         {
             _sourceSwitch.Level = level;
         }
 
-        public void LogInformation(string message)
+        public void AddListener(TraceListener listener)
         {
-            _traceSource.TraceInformation(message);
-            _traceSource.Flush();
+            _traceSource.Listeners.Add(listener);
         }
 
-        public void LogError(string message)
+        public void RemoveListener(string listenerName)
         {
-            _traceSource.TraceEvent(TraceEventType.Error, 0, message);
-            _traceSource.Flush();
+            var listener = _traceSource.Listeners[listenerName];
+            if (listener != null)
+            {
+                _traceSource.Listeners.Remove(listener);
+                listener.Dispose();
+            }
         }
 
-        public void LogWarning(string message)
+        public void SetListenerFilter(EventTypeFilter filter, string listenerName)
         {
-            _traceSource.TraceEvent(TraceEventType.Warning, 0, message);
+            var listener = _traceSource.Listeners[listenerName];
+            if (listener != null)
+            {
+                listener.Filter = filter;
+            }
+        }
+
+        public void LogVerbose(string message) => Log(TraceEventType.Verbose, message);
+        public void LogInformation(string message) => Log(TraceEventType.Information, message);
+        public void LogWarning(string message) => Log(TraceEventType.Warning, message);
+        public void LogError(string message) => Log(TraceEventType.Error, message);
+        public void LogCritical(string message) => Log(TraceEventType.Critical, message);
+
+        private void Log(TraceEventType eventType, string message)
+        {
+            _traceSource.TraceEvent(eventType, 0, message);
             _traceSource.Flush();
         }
     }
