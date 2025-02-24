@@ -27,7 +27,7 @@ namespace ServerFramework
                 Filter = new EventTypeFilter(SourceLevels.Warning)
             });
 
-            if (!EventLog.SourceExists("AbstractTCPServer"))
+            if (OperatingSystem.IsWindows() && !EventLog.SourceExists("AbstractTCPServer"))
             {
                 try
                 {
@@ -40,10 +40,13 @@ namespace ServerFramework
                 }
             }
 
-            _traceSource.Listeners.Add(new EventLogTraceListener("AbstractTCPServer")
+            if (OperatingSystem.IsWindows())
             {
-                Filter = new EventTypeFilter(SourceLevels.Error)
-            });
+                _traceSource.Listeners.Add(new EventLogTraceListener("AbstractTCPServer")
+                {
+                    Filter = new EventTypeFilter(SourceLevels.Error)
+                });
+            }
         }
 
         public static Logger Instance => _instance;
