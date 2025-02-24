@@ -1,7 +1,6 @@
-﻿using System.Net.Sockets;
-using System.Net;
+﻿using System.Net;
+using System.Net.Sockets;
 using System.Xml;
-using System.Diagnostics;
 
 namespace ServerFramework
 {
@@ -11,20 +10,9 @@ namespace ServerFramework
         private readonly string _serverName;
         private volatile bool _running = true;
         private readonly string _confFile = "MyConf.xml";
-        private readonly string _logFile = "../../../../server.log";
-        private readonly TraceSource _traceSource;
-        private readonly SourceSwitch _sourceSwitch;
 
         protected AbstractTCPServer()
         {
-            _sourceSwitch = new SourceSwitch("SourceSwitch", "All");
-            _traceSource = new TraceSource("AbstractTCPServer", SourceLevels.All)
-            {
-                Switch = _sourceSwitch
-            };
-            _traceSource.Listeners.Add(new ConsoleTraceListener());
-            _traceSource.Listeners.Add(new TextWriterTraceListener(_logFile));
-
             try
             {
                 var path = Environment.GetEnvironmentVariable("AbstractServerConf");
@@ -43,12 +31,11 @@ namespace ServerFramework
                     ? port
                     : throw new InvalidOperationException("Invalid or missing ServerPort in configuration.");
 
-                _traceSource.TraceInformation("Configuration loaded successfully.");
+                Logger.Instance.LogInformation("Configuration loaded successfully.");
             }
             catch (Exception ex)
             {
-                _traceSource.TraceEvent(TraceEventType.Error, 0, $"Error loading configuration: {ex.Message}");
-                _traceSource.Flush();
+                Logger.Instance.LogError($"Error loading configuration: {ex.Message}");
                 throw;
             }
         }
@@ -61,7 +48,7 @@ namespace ServerFramework
             TcpListener listener = new TcpListener(IPAddress.Loopback, _port);
             listener.Start();
 
-            _traceSource.TraceInformation($"{_serverName} started on port {_port}");
+            Logger.Instance.LogInformation($"{_serverName} started on port {_port}");
 
             Task.Run(() => StopServer());
 
@@ -73,11 +60,10 @@ namespace ServerFramework
                     {
                         TcpClient socket = listener.AcceptTcpClient();
 
-                        _traceSource.TraceInformation($"Client connected from (ip,port) = ({socket.Client.RemoteEndPoint})");
+                        Logger.Instance.LogInformation($"Client connected from (ip,port) = ({socket.Client.RemoteEndPoint})");
 
                         Task.Run(() => HandleClient(socket));
                     }
-
                     else
                     {
                         Thread.Sleep(2 * 1000);
@@ -85,10 +71,8 @@ namespace ServerFramework
                 }
                 catch (Exception ex)
                 {
-                    _traceSource.TraceEvent(TraceEventType.Error, 0, $"Error in server loop: {ex.Message}");
-                    _traceSource.Flush();
+                    Logger.Instance.LogError($"Error in server loop: {ex.Message}");
                 }
-                
             }
 
             listener.Stop();
@@ -108,14 +92,12 @@ namespace ServerFramework
             }
             catch (Exception ex)
             {
-                _traceSource.TraceEvent(TraceEventType.Error, 0, $"Error handling client: {ex.Message}");
-                _traceSource.Flush();
+                Logger.Instance.LogError($"Error handling client: {ex.Message}");
             }
             finally
             {
-                _traceSource.TraceInformation($"Client disconnected from (ip, port) = ({remoteEndPoint})");
+                Logger.Instance.LogInformation($"Client disconnected from (ip, port) = ({remoteEndPoint})");
             }
-            
         }
 
         protected abstract void TcpServerWork(StreamReader sr, StreamWriter sw);
@@ -143,8 +125,7 @@ namespace ServerFramework
                     string? command = sr.ReadLine();
                     if (command == "Shutdown Server")
                     {
-                        _traceSource.TraceInformation("Server shutting down.");
-                        _traceSource.Flush();
+                        Logger.Instance.LogInformation("Server shutting down.");
 
                         SetRunningToFalse();
                         break;
@@ -152,8 +133,7 @@ namespace ServerFramework
                 }
                 catch (Exception ex)
                 {
-                    _traceSource.TraceEvent(TraceEventType.Error, 0, $"Error in stop server loop: {ex.Message}");
-                    _traceSource.Flush();
+                    Logger.Instance.LogError($"Error in stop server loop: {ex.Message}");
                 }
             }
 
