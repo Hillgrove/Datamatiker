@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{4BE2565C-BC7D-473A-8D97-6F5C647921B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidatorTests1", "ValidatorTests1\ValidatorTests1.csproj", "{E2B31DCA-2D89-42B7-86B8-7A9462E23ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextExtractor", "TextExtractor\TextExtractor.csproj", "{C1700E65-0686-43FE-83C5-8CF74F777515}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BE2565C-BC7D-473A-8D97-6F5C647921B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE2565C-BC7D-473A-8D97-6F5C647921B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE2565C-BC7D-473A-8D97-6F5C647921B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE2565C-BC7D-473A-8D97-6F5C647921B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B31DCA-2D89-42B7-86B8-7A9462E23ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B31DCA-2D89-42B7-86B8-7A9462E23ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B31DCA-2D89-42B7-86B8-7A9462E23ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B31DCA-2D89-42B7-86B8-7A9462E23ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1700E65-0686-43FE-83C5-8CF74F777515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1700E65-0686-43FE-83C5-8CF74F777515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1700E65-0686-43FE-83C5-8CF74F777515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1700E65-0686-43FE-83C5-8CF74F777515}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
