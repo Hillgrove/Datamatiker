@@ -1,1 +1,0 @@
-insert into ProductTypes (Name) values ('Service'), ('Software'), ('Hardware')
