@@ -1,0 +1,38 @@
+USE [master]
+GO
+CREATE DATABASE [ImdbBasics]
+GO
+USE [ImdbBasics]
+GO
+CREATE TABLE [dbo].[Genre](
+	[GenreID] INT IDENTITY(1,1) NOT NULL,
+	[Name] VARCHAR(20) NOT NULL,
+	CONSTRAINT [PK_Genre] PRIMARY KEY CLUSTERED ([GenreID]),
+	CONSTRAINT [UQ_Genre_Name] UNIQUE ([Name])
+)
+GO
+CREATE TABLE [dbo].[Title](
+	[Tconst] VARCHAR(10) NOT NULL,
+	[TitleTypeID] INT NOT NULL,
+	[PrimaryTitle] NVARCHAR(255) NOT NULL,
+	[OriginalTitle] NVARCHAR(255) NOT NULL,
+	[IsAdult] BIT NOT NULL,
+	[StartYear] SMALLINT NULL,
+	[EndYear] SMALLINT NULL,
+	[RuntimeMinutes] INT NULL,
+	CONSTRAINT [PK_Title] PRIMARY KEY CLUSTERED ([Tconst])
+)
+GO
+CREATE TABLE [dbo].[TitleGenre](
+	[Tconst] VARCHAR(10) NOT NULL,
+	[GenreID] INT NOT NULL,
+	CONSTRAINT [PK_TitleGenre] PRIMARY KEY CLUSTERED ([Tconst], [GenreID])
+)
+GO
+CREATE TABLE [dbo].[TitleType](
+	[TitleTypeID] INT IDENTITY(1,1) NOT NULL,
+	[Name] VARCHAR(20) NOT NULL,
+	CONSTRAINT [PK_TitleType] PRIMARY KEY CLUSTERED ([TitleTypeID]),
+	CONSTRAINT [UQ_TitleType_Name] UNIQUE ([Name])
+)
+GO

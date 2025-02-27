@@ -13,7 +13,7 @@ create table TitleType (
 );
 
 create table Title (
-	Tconst char(9),
+	Tconst varchar(10),
 	TitleTypeID int not null,
 	PrimaryTitle nvarchar(255) not null,
 	OriginalTitle nvarchar(255) not null,
@@ -39,7 +39,7 @@ create table Genre (
 );
 
 create table TitleGenre (
-	Tconst char(9) not null,
+	Tconst varchar(10) not null,
 	GenreID int not null,
 	
 	constraint PK_TitleGenre primary key clustered (Tconst, GenreID asc),
