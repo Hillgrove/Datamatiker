@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CrossTalk
 {
-    public class Reciter
+    public class ReciterParallel
     {
         private static Random _rng = new Random();
 
@@ -13,13 +14,19 @@ namespace CrossTalk
         /// </summary>
         public static void ReciteAllTheWords()
         {
-            List<string> danish = new List<string> {"En", "To", "Tre", "Fire", "Fem", "Seks", "Syv", "Otte" };
+            List<string> danish = new List<string> { "En", "To", "Tre", "Fire", "Fem", "Seks", "Syv", "Otte" };
             List<string> english = new List<string> { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight" };
             List<string> german = new List<string> { "Eins", "Zwei", "Drei", "Vier", "Funf", "Sechs", "Sieben", "Acht" };
 
-            Recite(danish);
-            Recite(english);
-            Recite(german);
+            Task reciteDanish = new Task(() => { Recite(danish); });
+            Task reciteEnglish = new Task(() => { Recite(english); });
+            Task reciteGerman = new Task(() => { Recite(german); });
+
+            reciteDanish.Start();
+            reciteEnglish.Start();
+            reciteGerman.Start();
+
+            Task.WaitAll(reciteDanish, reciteEnglish, reciteGerman);
         }
 
         /// <summary>

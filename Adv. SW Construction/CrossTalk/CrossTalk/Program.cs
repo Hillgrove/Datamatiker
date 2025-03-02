@@ -6,7 +6,8 @@ namespace CrossTalk
     {
         static void Main(string[] args)
         {
-            Reciter.ReciteAllTheWords();
+            //Reciter.ReciteAllTheWords();
+            ReciterParallel.ReciteAllTheWords();
 
             KeepConsoleWindowOpen();
         }
