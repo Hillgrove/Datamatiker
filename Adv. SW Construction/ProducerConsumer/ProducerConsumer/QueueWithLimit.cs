@@ -13,7 +13,9 @@ namespace ProducerConsumer
         #region Instance fields
         private Queue<T> _queue;
         private int _limit;
-        private int _countInitial;  
+        private int _countInitial;
+
+        private readonly Object _queueLock = new Object();
         #endregion
 
         #region Constructor
@@ -40,7 +42,12 @@ namespace ProducerConsumer
         /// </summary>
         public int CountCurrent
         {
-            get { return _queue.Count; }
+            get
+            {
+                lock (_queueLock)
+                {
+                    return _queue.Count; 
+                } }
         }
 
         /// <summary>
@@ -60,13 +67,16 @@ namespace ProducerConsumer
         /// <returns>True is insert was successful, otherwise false.</returns>
         public bool Insert(T value)
         {
-            if (_queue.Count < _limit)
+            lock (_queueLock)
             {
-                _queue.Enqueue(value);
-                return true;
-            }
+                if (_queue.Count < _limit)
+                {
+                    _queue.Enqueue(value);
+                    return true;
+                }
 
-            return false;
+                return false; 
+            }
         }
 
         /// <summary>
@@ -76,12 +86,16 @@ namespace ProducerConsumer
         /// <returns>Removed object</returns>
         public T Remove()
         {
-            if (_queue.Count == 0)
+            lock (_queueLock)
             {
-                throw new InvalidOperationException();
-            }
 
-            return _queue.Dequeue();
+                if (_queue.Count == 0)
+                {
+                    throw new InvalidOperationException();
+                }
+
+                return _queue.Dequeue(); 
+            }
         } 
         #endregion
     }
