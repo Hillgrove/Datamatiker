@@ -1,26 +1,24 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace NumericalPi
 {
-    public class PiCalc
+    public class PiCalcFixed
     {
-        /// <summary>
-        /// Executes the calculation of an 
-        /// approximate value of pi.
-        /// </summary>
-        /// <param name="iterations">Number of iterations to perform</param>
-        /// <returns>Approximate value of pi</returns>
         public double Calculate(int iterations)
         {
-            int insideUnitCircle = Iterate(iterations);
+            Task<int> taskA = Task.Run(() => Iterate(iterations % 4));
+            Task<int> taskB = Task.Run(() => Iterate(iterations % 4));
+            Task<int> taskC = Task.Run(() => Iterate(iterations % 4));
+            Task<int> taskD = Task.Run(() => Iterate(iterations % 4));
+
+            Task.WaitAll(taskA, taskB, taskC, taskD);
+
+            int insideUnitCircle = taskA.Result + taskB.Result + taskC.Result + taskD.Result;
+
             return insideUnitCircle * 4.0 / iterations;
         }
 
-        /// <summary>
-        /// Perform a number of "dart-throwing" simulations.
-        /// </summary>
-        /// <param name="iterations">Number of dart-throws to perform</param>
-        /// <returns>Number of throws within the unit circle</returns>
         public int Iterate(int iterations)
         {
             Random _generator = new Random(Guid.NewGuid().GetHashCode());

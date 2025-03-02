@@ -8,11 +8,14 @@ namespace NumericalPi
         static void Main(string[] args)
         {
             Stopwatch watch = new Stopwatch();
-            PiCalc calculator = new PiCalc();
-            
+            PiCalc calculatorOrg = new PiCalc();
+            PiCalcFixed calculatorFixed = new PiCalcFixed();
+            PiCalcListOfTasks calculatorListofTasks = new PiCalcListOfTasks();
+            PiCalcParallel calculcatorParallel = new PiCalcParallel();
+
             Console.WriteLine("Started");
             watch.Start();
-            double numPi = calculator.Calculate(100000000);
+            double numPi = calculcatorParallel.Calculate(100000000, 16);
             watch.Stop();
             Console.WriteLine("Done");
 
