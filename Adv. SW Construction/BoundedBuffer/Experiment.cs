@@ -2,46 +2,43 @@
 {
     internal class Experiment
     {
-        private static readonly Random _random = new();
-        private readonly int _bufferSize;
+        private static readonly Random _random = Random.Shared;
 
-        public Experiment(int bufferSize)
+        private void Producer(BoundedBuffer<Item> queue)
         {
-            _bufferSize = bufferSize;
+            while (true)
+            {
+                Thread.Sleep(_random.Next(100, 250));
+                var item = new Item(_random.Next(10000));
+                queue.Insert(item);
+                Console.WriteLine($"Produced: {item}"); 
+            }
         }
 
-        private static void Producer(BoundedBuffer<Item> queue)
+        private void Consumer(BoundedBuffer<Item> queue)
         {
-            Thread.Sleep(_random.Next(10, 150));
-            var item = new Item(_random.Next(0, 100));
-            queue.Insert(item);
-            Console.WriteLine($"Produced: {item}");
+            while (true)
+            {
+                var item = queue.Consume();
+                Console.WriteLine($"Consumed: {item}");
+                Thread.Sleep(_random.Next(500)); 
+            }
         }
 
-        private static void Consumer(BoundedBuffer<Item> queue)
+        public void Start(int bufferSize, int noOfProducers, int noOfConsumers)
         {
-            Thread.Sleep(_random.Next(10, 150));
-            var item = queue.Consume();
-            Console.WriteLine($"Consumed: {item}");
-        }
+            var queue = new BoundedBuffer<Item>(bufferSize);
 
-        public async Task StartAsync()
-        {
-            var queue = new BoundedBuffer<Item>(_bufferSize);
+            for (int i = 0; i < noOfProducers; i++)
+            {
+                Task.Run(() => Producer(queue));
+            }
 
-            List<Task> tasks =
-            [
-                Task.Run(() => Producer(queue)),
-                Task.Run(() => Producer(queue)),
-                Task.Run(() => Producer(queue)),
-                Task.Run(() => Producer(queue)),
-                Task.Run(() => Consumer(queue)),
-                Task.Run(() => Consumer(queue))
-            ];
-
-            await Task.WhenAll(tasks);
-
-            Console.WriteLine("\nTasks completed.");
+            Thread.Sleep(100);
+            for (int i = 0; i < noOfConsumers; i++)
+            {
+                Task.Run(() => Consumer(queue));
+            }
         }
     }
 }
