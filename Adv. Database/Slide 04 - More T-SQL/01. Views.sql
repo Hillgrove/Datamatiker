@@ -10,10 +10,12 @@
 	--select *, 'English' as CustomerType
 	--from EnglishCustomers
 
+
 --create view SpecifiedWithNormal as
 --	select a.CustomerId, a.Age, a.CustomerType, customers.Country
 --	from AllSpecifiedCustomers as a left join Customers
 --	on a.CustomerId = customers.CustomerId
+
 
 --alter view countryinfo with schemabinding as
 --select count_big(*) as CustomerAmount, country
