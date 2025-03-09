@@ -13,6 +13,8 @@ namespace ImdbDataInsert
             var titleTypes = new Dictionary<string, int>();
             var titleGenres = new Dictionary<string, HashSet<int>>();
 
+            Console.WriteLine("Reading Lines from TSV file...");
+
             foreach (string line in File.ReadLines(filepath).Skip(1))
             {
                 /* 
@@ -28,10 +30,11 @@ namespace ImdbDataInsert
                 ExtractTitles(titles, titleTypes, fields);
                 ExtractGenres(genres, titleGenres, fields);
 
-                if (++linesRead % 10000 == 0) Console.WriteLine($"{linesRead} Lines processed.");
+                if (++linesRead % 10000 == 0) Console.WriteLine($"\r{linesRead} Lines processed");
                 if (linesRead >= linesToRead) break;
             }
 
+            Console.WriteLine("All lines processed");
             return titles;
         }
 
