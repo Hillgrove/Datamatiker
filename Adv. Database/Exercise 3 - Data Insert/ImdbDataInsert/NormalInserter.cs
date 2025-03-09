@@ -4,9 +4,9 @@ using System.Data;
 
 namespace ImdbDataInsert
 {
-    public class NormalInserter
+    public class NormalInserter : IInserter
     {
-        public static void InsertData(List<Title> titles)
+        public void InsertData(List<Title> titles)
         {
             int titlesInserted = 0;
 

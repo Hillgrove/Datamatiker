@@ -7,7 +7,8 @@ DateTime startTime = DateTime.Now;
 var titles = TSVReader.ReadFromFile(filepath, linesToRead);
 Console.WriteLine();
 
-NormalInserter.InsertData(titles);
+IInserter inserter = new NormalInserter();
+inserter.InsertData(titles);
 DateTime endTime = DateTime.Now;
 
 double seconds = endTime.Subtract(startTime).TotalSeconds;
