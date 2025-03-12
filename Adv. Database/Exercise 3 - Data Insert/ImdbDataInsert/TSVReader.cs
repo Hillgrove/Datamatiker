@@ -32,9 +32,9 @@ namespace ImdbDataInsert
                     Console.WriteLine($"The line does not have 9 columns: {linesRead}");
                 }
 
-                ExtractTitleTypes(titleTypes, fields);
-                ExtractTitles(titles, titleTypes, fields);
-                ExtractGenres(genres, titleGenres, fields);
+                ExtractTitleType(titleTypes, fields);
+                ExtractTitle(titles, titleTypes, fields);
+                ExtractGenre(genres, titleGenres, fields);
 
                 if (linesRead % 10000 == 0) Console.WriteLine($"\r{linesRead} Lines processed");
                 if (linesRead >= linesToRead) break;
@@ -44,7 +44,7 @@ namespace ImdbDataInsert
             return titles;
         }
 
-        private static void ExtractTitleTypes(Dictionary<string, int> titleTypes, string[] fields)
+        private static void ExtractTitleType(Dictionary<string, int> titleTypes, string[] fields)
         {
             if (!titleTypes.ContainsKey(fields[1]))
             {
@@ -52,7 +52,7 @@ namespace ImdbDataInsert
             }
         }
 
-        private static void ExtractTitles(List<Title> titles, Dictionary<string, int> titleTypes, string[] fields)
+        private static void ExtractTitle(List<Title> titles, Dictionary<string, int> titleTypes, string[] fields)
         {
             // extract title
             titles.Add(new Title
@@ -61,14 +61,14 @@ namespace ImdbDataInsert
                 TitleTypeID = titleTypes[fields[1]],
                 PrimaryTitle = fields[2],
                 OriginalTitle = fields[3],
-                IsAdult = fields[4] == "1",
-                StartYear = fields[5] == @"\N" ? null : short.Parse(fields[5]),
-                EndYear = fields[6] == @"\N" ? null : short.Parse(fields[6]),
-                RuntimeMinutes = fields[7] == @"\N" ? null : short.Parse(fields[7])
+                IsAdult = CheckBit(fields[4], fields[0], "IsAdult"),
+                StartYear = CheckNumber<short>(fields[5], fields[0], "StartYear"),
+                EndYear = CheckNumber<short>(fields[6], fields[0], "EndYear"),
+                RuntimeMinutes = CheckNumber<int>(fields[7], fields[0], "RuntimeMinutes")
             });
         }
 
-        private static void ExtractGenres(Dictionary<string, int> genres, Dictionary<string, HashSet<int>> titleGenres, string[] fields)
+        private static void ExtractGenre(Dictionary<string, int> genres, Dictionary<string, HashSet<int>> titleGenres, string[] fields)
         {
             // extract genre and titlegenres
             var genreFields = fields[8].Split(",");
@@ -94,5 +94,25 @@ namespace ImdbDataInsert
                 titleValue.Add(genreID);
             }
         }
+
+        private static bool CheckBit(string value, string tConst, string columnName)
+        {
+            if (value == "1") return true;
+            if (value == "0") return false;
+
+            Console.WriteLine($"Warning: {tConst} has an invalid value for '{columnName}': '{value}. Using false as fallback.'");
+            return false;
+        }
+
+        private static T? CheckNumber<T>(string value, string tConst, string columnName) where T : struct
+        {
+            if (value == @"\N") return null;
+            if (typeof(T) == typeof(short) && short.TryParse(value, out short shortResult)) return (T)(object)shortResult;
+            if (typeof(T) == typeof(int) && int.TryParse(value, out int intResult)) return (T)(object)intResult;
+
+            Console.WriteLine($"Warning: {tConst} has an invalid value for '{columnName}': '{value}. Using -1 as fallback.'");
+            return (T)(object)-1;
+        }
+
     }
 }
