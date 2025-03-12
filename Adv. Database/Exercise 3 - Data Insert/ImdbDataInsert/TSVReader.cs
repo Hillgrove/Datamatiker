@@ -15,7 +15,7 @@ namespace ImdbDataInsert
 
             Console.WriteLine("Reading Lines from TSV file...");
 
-            foreach (string line in File.ReadLines(filepath).Skip(1))
+            foreach (string line in File.ReadLines(filepath).Skip(1).Take(linesToRead))
             {
                 /* 
                  * Sample data
@@ -23,14 +23,20 @@ namespace ImdbDataInsert
                  * tt0000001    short       Carmencita              Carmencita      0           1894        \N          1                   Documentary,Short
                  * tt0000019    short       The Clown BarberThe     Clown Barber	0	        1898	    \N	        \N                  Comedy,Short
                  */
-
+                
+                linesRead++;
                 string[] fields = line.Split("\t");
+                
+                if (fields.Length != 9)
+                {
+                    Console.WriteLine($"The line does not have 9 columns: {linesRead}");
+                }
 
                 ExtractTitleTypes(titleTypes, fields);
                 ExtractTitles(titles, titleTypes, fields);
                 ExtractGenres(genres, titleGenres, fields);
 
-                if (++linesRead % 10000 == 0) Console.WriteLine($"\r{linesRead} Lines processed");
+                if (linesRead % 10000 == 0) Console.WriteLine($"\r{linesRead} Lines processed");
                 if (linesRead >= linesToRead) break;
             }
 

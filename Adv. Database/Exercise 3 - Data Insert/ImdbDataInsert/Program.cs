@@ -1,9 +1,13 @@
 ﻿using ImdbDataInsert;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 string filepath = @"C:\Programming\IMDBData\title.basics.tsv";
 int linesToRead = 50000;
+var titles = TSVReader.ReadFromFile(filepath, linesToRead);
+
+Stopwatch stopwatch = new Stopwatch();
 
 using SqlConnection sqlConn = new(
     "Server=Hilldesk;" +
@@ -23,13 +27,13 @@ while (true)
     switch (choice)
     {
         case "n":
-            NormalInsert();
+            Inserter(new NormalInserter());
             break;
         case "p":
-            PreparedInsert();
+            Inserter(new PreparedInserter());
             break;
         case "e":
-            EFCoreInsert();
+            Inserter(new EfCoreInserter());
             break;
         case "b":
             break;
@@ -51,70 +55,28 @@ void PrintMenu()
     Console.WriteLine();
 }
 
-void NormalInsert()
+void Inserter(IInserter inserter)
 {
-    var titles = TSVReader.ReadFromFile(filepath, linesToRead);
+    PrepareDatabase(sqlConn);
 
-    Console.WriteLine("\nPreparing database for testing...");
-    int deletedRows = RemoveRowsFromDB();
-    Console.WriteLine($"{deletedRows} rows deleted from database");
-
-    DateTime startTime = DateTime.Now;
-    IInserter inserter = new NormalInserter();
+    var stopwatch = Stopwatch.StartNew();
     inserter.InsertData(sqlConn, titles);
-    DateTime endTime = DateTime.Now;
+    stopwatch.Stop();
 
-    double seconds = endTime.Subtract(startTime).TotalSeconds;
+    double seconds = stopwatch.Elapsed.TotalSeconds;
     Console.WriteLine();
-    Console.WriteLine($"Inserting {linesToRead} records using Normal Insert takes {seconds:F2} seconds");
+    Console.WriteLine($"Inserting {linesToRead} records using {inserter.GetType().Name} took {seconds:F2} seconds");
     Console.WriteLine($"Inserting 11.000.000 records would take an estimated time of {11000000 / linesToRead * seconds:F2} seconds");
 
     Console.Write("\nPress enter to return to menu");
     Console.ReadKey();
 }
 
-void EFCoreInsert()
+void PrepareDatabase(SqlConnection sqlConn)
 {
-    var titles = TSVReader.ReadFromFile(filepath, linesToRead);
-
     Console.WriteLine("\nPreparing database for testing...");
     int deletedRows = RemoveRowsFromDB();
     Console.WriteLine($"{deletedRows} rows deleted from database");
-
-    DateTime startTime = DateTime.Now;
-    IInserter inserter = new EfCoreInserter();
-    inserter.InsertData(sqlConn, titles);
-    DateTime endTime = DateTime.Now;
-
-    double seconds = endTime.Subtract(startTime).TotalSeconds;
-    Console.WriteLine();
-    Console.WriteLine($"Inserting {linesToRead} records using Normal Insert takes {seconds:F2} seconds");
-    Console.WriteLine($"Inserting 11.000.000 records would take an estimated time of {11000000 / linesToRead * seconds:F2} seconds");
-
-    Console.Write("\nPress enter to return to menu");
-    Console.ReadKey();
-}
-
-void PreparedInsert()
-{
-    var titles = TSVReader.ReadFromFile(filepath, linesToRead);
-
-    Console.WriteLine("\nPreparing database for testing...");
-    int deletedRows = RemoveRowsFromDB();
-    Console.WriteLine($"{deletedRows} rows deleted from database");
-
-    DateTime startTime = DateTime.Now;
-    IInserter inserter = new PreparedInserter();
-    inserter.InsertData(sqlConn, titles);
-    DateTime endTime = DateTime.Now;
-
-    double seconds = endTime.Subtract(startTime).TotalSeconds;
-    Console.WriteLine();
-    Console.WriteLine($"Inserting {linesToRead} records using Normal Insert takes {seconds:F2} seconds");
-    Console.WriteLine($"Inserting 11.000.000 records would take an estimated time of {11000000 / linesToRead * seconds:F2} seconds");
-
-    Console.Write("\nPress enter to return to menu");
-    Console.ReadKey();
 }
 
 int RemoveRowsFromDB()
