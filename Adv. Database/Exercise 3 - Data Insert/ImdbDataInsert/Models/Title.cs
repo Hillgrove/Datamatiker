@@ -9,7 +9,7 @@
         public bool IsAdult { get; set; }
         public short? StartYear { get; set; }
         public short? EndYear { get; set; }
-        public short? RuntimeMinutes { get; set; }
+        public int? RuntimeMinutes { get; set; }
 
         public override string ToString()
         {
