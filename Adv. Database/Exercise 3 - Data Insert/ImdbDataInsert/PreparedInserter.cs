@@ -21,14 +21,16 @@ namespace ImdbDataInsert
                 "VALUES (@Tconst, @TitleTypeID, @PrimaryTitle, @OriginalTitle, @IsAdult, @StartYear, @EndYear, @RuntimeMinutes)",
                 sqlConn);
 
-            cmd.Parameters.Add("@Tconst", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@Tconst", SqlDbType.NVarChar, 10);
             cmd.Parameters.Add("@TitleTypeID", SqlDbType.Int);
-            cmd.Parameters.Add("@PrimaryTitle", SqlDbType.NVarChar);
-            cmd.Parameters.Add("@OriginalTitle", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@PrimaryTitle", SqlDbType.NVarChar, 255);
+            cmd.Parameters.Add("@OriginalTitle", SqlDbType.NVarChar, 255);
             cmd.Parameters.Add("@IsAdult", SqlDbType.Bit);
             cmd.Parameters.Add("@StartYear", SqlDbType.SmallInt);
             cmd.Parameters.Add("@EndYear", SqlDbType.SmallInt);
-            cmd.Parameters.Add("@RuntimeMinutes", SqlDbType.SmallInt);
+            cmd.Parameters.Add("@RuntimeMinutes", SqlDbType.Int);
+
+            cmd.Prepare();
 
             try
             {
@@ -42,7 +44,6 @@ namespace ImdbDataInsert
                     cmd.Parameters["@StartYear"].Value = (object?)title.StartYear ?? DBNull.Value;
                     cmd.Parameters["@EndYear"].Value = (object?)title.EndYear ?? DBNull.Value;
                     cmd.Parameters["@RuntimeMinutes"].Value = (object?)title.RuntimeMinutes ?? DBNull.Value;
-
                     cmd.ExecuteNonQuery();
                     titlesInserted++;
 
