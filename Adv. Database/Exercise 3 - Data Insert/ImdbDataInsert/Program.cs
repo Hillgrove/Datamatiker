@@ -26,7 +26,6 @@ while (true)
     Console.Clear();
     PrintMenu();
 
-    Console.Write("Please enter action: ");
     string? choice = Console.ReadLine()?.Trim().ToLower();
     Console.WriteLine();
 
@@ -53,9 +52,9 @@ while (true)
 void PrintMenu()
 {
     Console.WriteLine();
-    Console.WriteLine("===========================================");
-    Console.WriteLine("   Welcome to the Magical SQL Inserter     ");
-    Console.WriteLine("===========================================");
+    Console.WriteLine("=========================================================");
+    Console.WriteLine("           Welcome to the Magical SQL Inserter           ");
+    Console.WriteLine("=========================================================");
     Console.WriteLine();
 
     Console.WriteLine($"  [N] Normal Insertion       {FormatSpeed(normalSpeed, 20)}");
@@ -64,7 +63,7 @@ void PrintMenu()
     Console.WriteLine($"  [B] Bulk Insert            {FormatSpeed(bulkSpeed, 20)}");
     Console.WriteLine($"  [Q] Quit");
 
-    Console.WriteLine("\n===========================================");
+    Console.WriteLine("\n=========================================================");
     Console.Write("Please enter action: ");
 }
 
