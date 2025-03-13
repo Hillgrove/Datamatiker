@@ -7,6 +7,11 @@ string filepath = @"C:\Programming\IMDBData\title.basics.tsv";
 int linesToRead = 50000;
 var titles = TSVReader.ReadFromFile(filepath, linesToRead);
 
+double? normalSpeed = null;
+double? preparedSpeed = null;
+double? efCoreSpeed = null;
+double? bulkSpeed = null;
+
 Stopwatch stopwatch = new Stopwatch();
 
 using SqlConnection sqlConn = new(
@@ -15,6 +20,7 @@ using SqlConnection sqlConn = new(
     "Integrated Security=True;" +
     "TrustServerCertificate=True;");
 
+// Main loop
 while (true)
 {
     Console.Clear();
@@ -27,35 +33,42 @@ while (true)
     switch (choice)
     {
         case "n":
-            Inserter(new NormalInserter());
+            normalSpeed = Inserter(new NormalInserter());
             break;
         case "p":
-            Inserter(new PreparedInserter());
+            preparedSpeed = Inserter(new PreparedInserter());
             break;
         case "e":
-            Inserter(new EfCoreInserter());
+            efCoreSpeed = Inserter(new EfCoreInserter());
             break;
         case "b":
+            bulkSpeed = Inserter(new BulkInserter());
             break;
         case "q":
-            Console.WriteLine("\nThanks for using the magical wonderland... Stay safe");
+            Console.WriteLine("\nThanks for using the Magical SQL Inserter... Stay safe");
             return;
     }
 }
 
 void PrintMenu()
 {
-    Console.WriteLine("Welcome to the magical wonderland of SQL insertions.\n");
-    Console.WriteLine("Please let me know what action you want to take:");
-    Console.WriteLine("Normal Insertion:\t\t(n)");
-    Console.WriteLine("Prepared Insertion:\t\t(p)");
-    Console.WriteLine("Entity FrameWork insertion:\t(e)");
-    Console.WriteLine("Bulk Insert: \t\t\t(b)");
-    Console.WriteLine("Quit: \t\t\t\t(q)");
     Console.WriteLine();
+    Console.WriteLine("===========================================");
+    Console.WriteLine("   Welcome to the Magical SQL Inserter     ");
+    Console.WriteLine("===========================================");
+    Console.WriteLine();
+
+    Console.WriteLine($"  [N] Normal Insertion       {FormatSpeed(normalSpeed, 20)}");
+    Console.WriteLine($"  [P] Prepared Insertion     {FormatSpeed(preparedSpeed, 20)}");
+    Console.WriteLine($"  [E] Entity Framework Insert{FormatSpeed(efCoreSpeed, 20)}");
+    Console.WriteLine($"  [B] Bulk Insert            {FormatSpeed(bulkSpeed, 20)}");
+    Console.WriteLine($"  [Q] Quit");
+
+    Console.WriteLine("\n===========================================");
+    Console.Write("Please enter action: ");
 }
 
-void Inserter(IInserter inserter)
+double Inserter(IInserter inserter)
 {
     PrepareDatabase(sqlConn);
 
@@ -70,6 +83,8 @@ void Inserter(IInserter inserter)
 
     Console.Write("\nPress enter to return to menu");
     Console.ReadKey();
+
+    return seconds;
 }
 
 void PrepareDatabase(SqlConnection sqlConn)
@@ -94,4 +109,9 @@ int RemoveRowsFromDB()
         Console.WriteLine($"Database error: {ex.Message}");
         return - 1;
     }
+}
+
+string FormatSpeed(double? speed, int width)
+{
+    return speed != null ? $"[{speed:F2}s]".PadLeft(width) : "[Not run]".PadLeft(width);
 }
