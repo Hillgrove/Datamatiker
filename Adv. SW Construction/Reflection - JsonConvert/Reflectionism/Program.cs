@@ -8,9 +8,9 @@ aClerk.Skills.Add("Clerkiness");
 aClerk.Skills.Add("Clericality");
 aManager.Employees.Add(aClerk);
 
-void TryReflection(Type type)
+void TryReflection(Type? type)
 {
-    if (type == typeof(object)) return;
+    if (type == null || type == typeof(object)) return;
 
     Console.WriteLine($"Class Name: {type.Name}");
     Console.WriteLine($"Type: {(type.IsInterface ? "Interface" : type.IsAbstract ? "Abstract Class" : "Class")}");
