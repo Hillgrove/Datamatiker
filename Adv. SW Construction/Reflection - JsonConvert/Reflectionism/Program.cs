@@ -1,4 +1,6 @@
-﻿using ReflectionLib;
+﻿using MyJsonLib;
+using Newtonsoft.Json;
+using ReflectionLib;
 using System.Reflection;
 
 Clerk aClerk = new Clerk("Clerkmaster", 1980);
@@ -31,4 +33,10 @@ void TryReflection(Type? type)
     TryReflection(type.BaseType);
 }
 
-TryReflection(aClerk.GetType());
+//TryReflection(aClerk.GetType());
+
+string clerkSerialized = JsonConvert.SerializeObject(aClerk);
+Console.WriteLine(clerkSerialized);
+
+var something = MyJsonConverter.Serialize(aClerk);
+Console.WriteLine(something);

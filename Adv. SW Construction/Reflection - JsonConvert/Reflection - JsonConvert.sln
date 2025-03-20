@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35728.132 d17.12
+VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionLib", "ReflectionLib\ReflectionLib.csproj", "{A7A29189-CB13-4301-B8EC-89AED78EB17B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectionism", "Reflectionism\Reflectionism.csproj", "{5E2050A7-E172-4B42-B77E-9E3EB0D4ED97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyJsonLib", "MyJsonLib\MyJsonLib.csproj", "{441CB828-868D-415B-951A-69F0B660D76D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5E2050A7-E172-4B42-B77E-9E3EB0D4ED97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E2050A7-E172-4B42-B77E-9E3EB0D4ED97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E2050A7-E172-4B42-B77E-9E3EB0D4ED97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{441CB828-868D-415B-951A-69F0B660D76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441CB828-868D-415B-951A-69F0B660D76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441CB828-868D-415B-951A-69F0B660D76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441CB828-868D-415B-951A-69F0B660D76D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
