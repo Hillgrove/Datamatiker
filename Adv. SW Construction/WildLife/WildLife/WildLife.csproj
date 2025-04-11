@@ -48,7 +48,10 @@
     <Compile Include="Common\AnimalGender.cs" />
     <Compile Include="Common\Randomizer.cs" />
     <Compile Include="IoC\AnimalBaseIoC.cs" />
-    <Compile Include="IoC\FoxIoC.cs" />
+    <Compile Include="IoC\Fox.cs" />
+    <Compile Include="IoC\Mouse.cs" />
+    <Compile Include="IoC\Rabbit.cs" />
+    <Compile Include="IoC\Tiger.cs" />
     <Compile Include="Original\AnimalBaseOriginal.cs" />
     <Compile Include="Common\AnimalKind.cs" />
     <Compile Include="Original\Fox.cs" />
